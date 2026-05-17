@@ -45,13 +45,13 @@ export const UPGRADE_STACK_LIMITS = {
 // Each upgrade can specify which weapons it's valid for
 export const UPGRADES = {
     damage: {
-        name: 'Damage Boost',
+        name: '伤害提升',
         icon: '⚔',
-        description: '+25% damage',
+        description: '+25%伤害',
         category: 'weapon',
         upgradeCategory: 'damage',
         maxStacks: 10,
-        getDescription: (stacks) => `+25% damage${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.damage})` : ''}`,
+        getDescription: (stacks) => `+25%伤害${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.damage})` : ''}`,
         apply: (player) => {
             // Stackable: recalculate from base damage
             const stacks = player.upgradeStacks?.damage || 0;
@@ -61,13 +61,13 @@ export const UPGRADES = {
         }
     },
     fireRate: {
-        name: 'Fire Rate',
+        name: '射速提升',
         icon: '⟫',
-        description: '+20% fire rate',
+        description: '+20%射速',
         category: 'weapon',
         upgradeCategory: 'fireRate',
         maxStacks: 10,
-        getDescription: (stacks) => `+20% fire rate${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.fireRate})` : ''}`,
+        getDescription: (stacks) => `+20%射速${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.fireRate})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.fireRate || 0;
             const baseFireRate = player.baseFireRate || player.weaponDef?.fireRate || 1.5;
@@ -76,12 +76,12 @@ export const UPGRADES = {
         }
     },
     speed: {
-        name: 'Movement Speed',
+        name: '移动加速',
         icon: '☄',
-        description: '+15% movement speed',
+        description: '+15%移速',
         category: 'passive',
         maxStacks: 10,
-        getDescription: (stacks) => `+15% movement speed${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.speed})` : ''}`,
+        getDescription: (stacks) => `+15%移速${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.speed})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.speed || 0;
             const baseSpeed = player.characterData?.stats?.speed || 150;
@@ -91,12 +91,12 @@ export const UPGRADES = {
         }
     },
     health: {
-        name: 'Max Health',
+        name: '生命上限',
         icon: '♥',
-        description: '+20 max HP',
+        description: '+20最大生命值',
         category: 'passive',
         maxStacks: 10,
-        getDescription: (stacks) => `+20 max HP${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.health})` : ''}`,
+        getDescription: (stacks) => `+20最大生命值${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.health})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.health || 0;
             const baseHealth = player.characterData?.stats?.health || 100;
@@ -111,12 +111,12 @@ export const UPGRADES = {
         }
     },
     projectileSpeed: {
-        name: 'Projectile Speed',
+        name: '弹速提升',
         icon: '➤',
-        description: '+25% projectile speed',
+        description: '+25%弹速',
         category: 'weapon',
         maxStacks: 10,
-        getDescription: (stacks) => `+25% projectile speed${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.projectileSpeed})` : ''}`,
+        getDescription: (stacks) => `+25%弹速${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.projectileSpeed})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.projectileSpeed || 0;
             const baseSpeed = player.baseProjectileSpeed || player.weaponDef?.projectileSpeed || 300;
@@ -125,12 +125,12 @@ export const UPGRADES = {
         }
     },
     xpGain: {
-        name: 'XP Gain',
+        name: '经验加成',
         icon: '★',
-        description: '+15% XP from enemies',
+        description: '+15%经验获取',
         category: 'passive',
         maxStacks: 10,
-        getDescription: (stacks) => `+15% XP from enemies${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.xpGain})` : ''}`,
+        getDescription: (stacks) => `+15%经验获取${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.xpGain})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.xpGain || 0;
             const baseMultiplier = player.characterData?.ability === 'xpBoost' ? 1.1 : 1.0;
@@ -138,12 +138,12 @@ export const UPGRADES = {
         }
     },
     pickupRadius: {
-        name: 'Pickup Radius',
+        name: '拾取范围',
         icon: '◐',
-        description: '+50% pickup range',
+        description: '+50%拾取范围',
         category: 'passive',
         maxStacks: 10,
-        getDescription: (stacks) => `+50% pickup range${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.pickupRadius})` : ''}`,
+        getDescription: (stacks) => `+50%拾取范围${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.pickupRadius})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.pickupRadius || 0;
             const baseRadius = 30;
@@ -152,14 +152,14 @@ export const UPGRADES = {
         }
     },
     multiShot: {
-        name: 'Multi-Shot',
+        name: '多重射击',
         icon: '⋮',
-        description: '+1 projectile per shot',
+        description: '额外发射1颗子弹',
         category: 'weapon',
         upgradeCategory: 'multiShot',
         validWeapons: ['pistol', 'smg', 'sniper'],
         maxStacks: 5,
-        getDescription: (stacks) => `+1 projectile per shot${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.multiShot})` : ''}`,
+        getDescription: (stacks) => `额外发射1颗子弹${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.multiShot})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.multiShot || 0;
             const baseCount = player.weaponDef?.projectileCount || 1;
@@ -167,13 +167,13 @@ export const UPGRADES = {
         }
     },
     piercing: {
-        name: 'Piercing',
+        name: '穿透弹',
         icon: '⇉',
-        description: '+1 enemy penetration',
+        description: '子弹额外穿透1个敌人',
         category: 'weapon',
         upgradeCategory: 'piercing',
         maxStacks: 5,
-        getDescription: (stacks) => `+1 enemy penetration${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.piercing})` : ''}`,
+        getDescription: (stacks) => `子弹额外穿透1个敌人${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.piercing})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.piercing || 0;
             const basePiercing = player.weaponDef?.piercing || 0;
@@ -181,12 +181,12 @@ export const UPGRADES = {
         }
     },
     obstaclePiercing: {
-        name: 'Obstacle Piercing',
+        name: '障碍穿透',
         icon: '⊡',
-        description: '+1 obstacle penetration',
+        description: '+1障碍物穿透',
         category: 'weapon',
         maxStacks: 5,
-        getDescription: (stacks) => `+1 obstacle penetration${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.obstaclePiercing})` : ''}`,
+        getDescription: (stacks) => `+1障碍物穿透${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.obstaclePiercing})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.obstaclePiercing || 0;
             const baseObstaclePiercing = player.weaponDef?.obstaclePiercing || 0;
@@ -194,13 +194,13 @@ export const UPGRADES = {
         }
     },
     critChance: {
-        name: 'Critical Strike',
+        name: '暴击',
         icon: '◆',
-        description: '+10% crit chance',
+        description: '+10%暴击率',
         category: 'weapon',
         upgradeCategory: 'crit',
         maxStacks: 10,
-        getDescription: (stacks) => `+10% crit chance${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.critChance})` : ''}`,
+        getDescription: (stacks) => `+10%暴击率${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.critChance})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.critChance || 0;
             const baseCritChance = player.weaponDef?.critChance || 0.05;
@@ -213,13 +213,13 @@ export const UPGRADES = {
         }
     },
     critDamage: {
-        name: 'Critical Power',
+        name: '暴击伤害',
         icon: '◈',
-        description: '+50% crit damage',
+        description: '+50%暴击伤害',
         category: 'weapon',
         upgradeCategory: 'crit',
         maxStacks: 10,
-        getDescription: (stacks) => `+50% crit damage${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.critDamage})` : ''}`,
+        getDescription: (stacks) => `+50%暴击伤害${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.critDamage})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.critDamage || 0;
             const baseCritDamage = player.weaponDef?.critDamage || 2.0;
@@ -232,14 +232,14 @@ export const UPGRADES = {
         }
     },
     spreadShot: {
-        name: 'Spread Shot',
+        name: '散射',
         icon: '⋰',
-        description: '+30° spread angle',
+        description: '+30°散射角度',
         category: 'weapon',
         upgradeCategory: 'spread',
         validWeapons: ['shotgun'], // Only shotgun has 'spread' in upgradeCategories
         maxStacks: 5,
-        getDescription: (stacks) => `+30° spread angle${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.spreadShot})` : ''}`,
+        getDescription: (stacks) => `+30°散射角度${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.spreadShot})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.spreadShot || 0;
             const baseSpread = player.weaponDef?.spreadAngle || 0;
@@ -247,14 +247,14 @@ export const UPGRADES = {
         }
     },
     pelletCount: {
-        name: 'More Pellets',
+        name: '弹丸增加',
         icon: '⁘',
-        description: '+1 pellet per shot',
+        description: '散射+1颗弹丸',
         category: 'weapon',
         upgradeCategory: 'pelletCount',
         validWeapons: ['shotgun'],
         maxStacks: 5,
-        getDescription: (stacks) => `+1 pellet per shot${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.pelletCount})` : ''}`,
+        getDescription: (stacks) => `散射+1颗弹丸${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.pelletCount})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.pelletCount || 0;
             const baseCount = player.weaponDef?.projectileCount || 3;
@@ -262,14 +262,14 @@ export const UPGRADES = {
         }
     },
     range: {
-        name: 'Extended Range',
+        name: '射程延伸',
         icon: '↔',
-        description: '+25% weapon range',
+        description: '+25%武器射程',
         category: 'weapon',
         upgradeCategory: 'range',
         validWeapons: ['sniper', 'flamethrower', 'explosive'], // All weapons with 'range' in upgradeCategories
         maxStacks: 5,
-        getDescription: (stacks) => `+25% weapon range${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.range})` : ''}`,
+        getDescription: (stacks) => `+25%武器射程${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.range})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.range || 0;
             const baseRange = player.weaponDef?.range || 600;
@@ -278,14 +278,14 @@ export const UPGRADES = {
         }
     },
     dot: {
-        name: 'Burn Damage',
+        name: '灼烧伤害',
         icon: '♨',
-        description: '+25% fire damage over time',
+        description: '+25%灼烧伤害（每秒伤害）',
         category: 'weapon',
         upgradeCategory: 'dot',
         validWeapons: ['flamethrower'],
         maxStacks: 10,
-        getDescription: (stacks) => `+25% fire damage over time${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.dot})` : ''}`,
+        getDescription: (stacks) => `+25%灼烧伤害${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.dot})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.dot || 0;
             const baseMultiplier = player.characterData?.ability === 'fireDot' ? 1.25 : 1.0;
@@ -293,14 +293,14 @@ export const UPGRADES = {
         }
     },
     orbitalCount: {
-        name: 'Extra Orb',
+        name: '额外轨道球',
         icon: '◉',
-        description: '+1 orbital orb',
+        description: '+1个轨道球',
         category: 'weapon',
         upgradeCategory: 'orbitalCount',
         validWeapons: ['orbital'],
         maxStacks: 5,
-        getDescription: (stacks) => `+1 orbital orb${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.orbitalCount})` : ''}`,
+        getDescription: (stacks) => `+1个轨道球${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.orbitalCount})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.orbitalCount || 0;
             const baseCount = player.weaponDef?.projectileCount || 1;
@@ -313,14 +313,14 @@ export const UPGRADES = {
         }
     },
     orbitalSpeed: {
-        name: 'Faster Orbit',
+        name: '轨道加速',
         icon: '⟲',
-        description: '+50% orbital rotation speed',
+        description: '+50%轨道球转速',
         category: 'weapon',
         upgradeCategory: 'orbitalSpeed',
         validWeapons: ['orbital'],
         maxStacks: 10,
-        getDescription: (stacks) => `+50% orbital rotation speed${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.orbitalSpeed})` : ''}`,
+        getDescription: (stacks) => `+50%轨道球转速${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.orbitalSpeed})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.orbitalSpeed || 0;
             const baseSpeed = player.weaponDef?.rotationSpeed || 180;
@@ -329,14 +329,14 @@ export const UPGRADES = {
         }
     },
     orbitalRadius: {
-        name: 'Wider Orbit',
+        name: '轨道扩展',
         icon: '○',
-        description: '+20% orbital radius',
+        description: '+20%轨道球半径',
         category: 'weapon',
         upgradeCategory: 'orbitalRadius',
         validWeapons: ['orbital'],
         maxStacks: 10,
-        getDescription: (stacks) => `+20% orbital radius${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.orbitalRadius})` : ''}`,
+        getDescription: (stacks) => `+20%轨道球半径${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.orbitalRadius})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.orbitalRadius || 0;
             const baseRadius = player.weaponDef?.orbitRadius || 45;
@@ -345,14 +345,14 @@ export const UPGRADES = {
         }
     },
     explosionRadius: {
-        name: 'Bigger Explosion',
+        name: '扩大爆炸',
         icon: '◎',
-        description: '+25% explosion radius',
+        description: '+25%爆炸范围',
         category: 'weapon',
         upgradeCategory: 'explosionRadius',
         validWeapons: ['explosive'],
         maxStacks: 10,
-        getDescription: (stacks) => `+25% explosion radius${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.explosionRadius})` : ''}`,
+        getDescription: (stacks) => `+25%爆炸范围${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.explosionRadius})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.explosionRadius || 0;
             const baseRadius = player.weaponDef?.explosionRadius || 50;
@@ -361,14 +361,14 @@ export const UPGRADES = {
         }
     },
     explosionDamage: {
-        name: 'Explosive Power',
+        name: '爆炸威力',
         icon: '☢',
-        description: '+25% explosion damage',
+        description: '+25%爆炸伤害',
         category: 'weapon',
         upgradeCategory: 'explosionDamage',
         validWeapons: ['explosive'],
         maxStacks: 10,
-        getDescription: (stacks) => `+25% explosion damage${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.explosionDamage})` : ''}`,
+        getDescription: (stacks) => `+25%爆炸伤害${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.explosionDamage})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.explosionDamage || 0;
             const baseDamage = player.weaponDef?.explosionDamage || 15;
@@ -377,14 +377,14 @@ export const UPGRADES = {
         }
     },
     chainJumps: {
-        name: 'More Chains',
+        name: '连锁增加',
         icon: '⚡',
-        description: '+1 chain jump',
+        description: '+1次闪电跳跃',
         category: 'weapon',
         upgradeCategory: 'chainJumps',
         validWeapons: ['chainLightning'],
         maxStacks: 5,
-        getDescription: (stacks) => `+1 chain jump${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.chainJumps})` : ''}`,
+        getDescription: (stacks) => `+1次闪电跳跃${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.chainJumps})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.chainJumps || 0;
             const baseJumps = player.weaponDef?.maxJumps || 3;
@@ -392,14 +392,14 @@ export const UPGRADES = {
         }
     },
     chainRange: {
-        name: 'Longer Chain',
+        name: '连锁延伸',
         icon: '⌁',
-        description: '+25% chain range',
+        description: '+25%闪电跳跃距离',
         category: 'weapon',
         upgradeCategory: 'chainRange',
         validWeapons: ['chainLightning'],
         maxStacks: 10,
-        getDescription: (stacks) => `+25% chain range${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.chainRange})` : ''}`,
+        getDescription: (stacks) => `+25%闪电跳跃距离${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.chainRange})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.chainRange || 0;
             const baseRange = player.weaponDef?.chainRange || 70;
@@ -408,14 +408,14 @@ export const UPGRADES = {
         }
     },
     chainDamage: {
-        name: 'Chain Power',
+        name: '连锁威力',
         icon: '⚡',
-        description: '-10% damage reduction per jump',
+        description: '-10%连锁衰减',
         category: 'weapon',
         upgradeCategory: 'chainDamage',
         validWeapons: ['chainLightning'],
         maxStacks: 10,
-        getDescription: (stacks) => `-10% damage reduction per jump${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.chainDamage})` : ''}`,
+        getDescription: (stacks) => `-10%连锁衰减${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.chainDamage})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.chainDamage || 0;
             const baseReduction = player.weaponDef?.chainDamageReduction || 0.15;
@@ -424,12 +424,12 @@ export const UPGRADES = {
         }
     },
     defense: {
-        name: 'Armor',
+        name: '护甲',
         icon: '▲',
-        description: '+2 damage reduction',
+        description: '+2护甲（减少固定伤害）',
         category: 'passive',
         maxStacks: 10,
-        getDescription: (stacks) => `+2 damage reduction${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.defense})` : ''}`,
+        getDescription: (stacks) => `+2护甲${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.defense})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.defense || 0;
             const baseDefense = player.characterData?.ability === 'tankStats' ? 0.15 : 0;
@@ -442,24 +442,24 @@ export const UPGRADES = {
     // ========================================
 
     lifesteal: {
-        name: 'Life Drain',
+        name: '生命汲取',
         icon: '♡',
-        description: 'Heal 2% of damage dealt',
+        description: '击杀敌人恢复生命值',
         category: 'passive',
         maxStacks: 5,
-        getDescription: (stacks) => `Heal ${(stacks || 1) * 2}% of damage dealt${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.lifesteal})` : ''}`,
+        getDescription: (stacks) => `恢复${(stacks || 1) * 2}%造成伤害的生命值${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.lifesteal})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.lifesteal || 0;
             player.lifestealPercent = stacks * 0.02; // 2% per stack
         }
     },
     dodgeChance: {
-        name: 'Evasion',
+        name: '闪避',
         icon: '⚡',
-        description: '+5% dodge chance',
+        description: '+5%闪避率',
         category: 'passive',
         maxStacks: 5,
-        getDescription: (stacks) => `+${(stacks || 1) * 5}% dodge chance${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.dodgeChance})` : ''}`,
+        getDescription: (stacks) => `+${(stacks || 1) * 5}%闪避率${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.dodgeChance})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.dodgeChance || 0;
             // Add to existing dodge chance (Scout has base 10%)
@@ -468,25 +468,25 @@ export const UPGRADES = {
         }
     },
     thorns: {
-        name: 'Thorns',
+        name: '荆棘',
         icon: '⌂',
-        description: 'Reflect 15% damage to attackers',
+        description: '受击时反弹15%伤害',
         category: 'passive',
         maxStacks: 5,
-        getDescription: (stacks) => `Reflect ${(stacks || 1) * 15}% damage${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.thorns})` : ''}`,
+        getDescription: (stacks) => `反弹${(stacks || 1) * 15}%伤害${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.thorns})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.thorns || 0;
             player.thornsPercent = stacks * 0.15; // 15% per stack
         }
     },
     aoeSize: {
-        name: 'Blast Radius',
+        name: '爆破范围',
         icon: '◎',
-        description: '+15% explosion/area size',
+        description: '+15%范围效果',
         category: 'weapon',
         upgradeCategory: 'explosionRadius',
         maxStacks: 10,
-        getDescription: (stacks) => `+${(stacks || 1) * 15}% AoE size${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.aoeSize})` : ''}`,
+        getDescription: (stacks) => `+${(stacks || 1) * 15}%范围效果${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.aoeSize})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.aoeSize || 0;
             player.aoeSizeMultiplier = 1 + (stacks * 0.15); // 15% per stack
@@ -498,24 +498,24 @@ export const UPGRADES = {
         }
     },
     knockback: {
-        name: 'Impact Force',
+        name: '冲击力',
         icon: '⇒',
-        description: '+20% knockback',
+        description: '+20%击退',
         category: 'weapon',
         maxStacks: 5,
-        getDescription: (stacks) => `+${(stacks || 1) * 20}% knockback${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.knockback})` : ''}`,
+        getDescription: (stacks) => `+${(stacks || 1) * 20}%击退${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.knockback})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.knockback || 0;
             player.knockbackMultiplier = 1 + (stacks * 0.2); // 20% per stack
         }
     },
     magnetRange: {
-        name: 'Treasure Hunter',
+        name: '寻宝猎人',
         icon: '◐',
-        description: '+25% pickup radius',
+        description: '+25%拾取范围',
         category: 'passive',
         maxStacks: 10,
-        getDescription: (stacks) => `+${(stacks || 1) * 25}% pickup radius${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.magnetRange})` : ''}`,
+        getDescription: (stacks) => `+${(stacks || 1) * 25}%拾取范围${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.magnetRange})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.magnetRange || 0;
             const baseRadius = 30;
@@ -526,12 +526,12 @@ export const UPGRADES = {
         }
     },
     invulnTime: {
-        name: 'Iron Skin',
+        name: '铁皮',
         icon: '◇',
-        description: '+0.15s invulnerability frames',
+        description: '+0.15秒无敌帧',
         category: 'passive',
         maxStacks: 5,
-        getDescription: (stacks) => `+${((stacks || 1) * 0.15).toFixed(2)}s invuln${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.invulnTime})` : ''}`,
+        getDescription: (stacks) => `+${((stacks || 1) * 0.15).toFixed(2)}秒无敌帧${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.invulnTime})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.invulnTime || 0;
             const baseDuration = 1.0; // Base invulnerability duration
@@ -539,12 +539,12 @@ export const UPGRADES = {
         }
     },
     moveDamage: {
-        name: 'Momentum',
+        name: '势如破竹',
         icon: '➜',
-        description: '+2% damage per speed stack',
+        description: '移动时积累伤害加成',
         category: 'passive',
         maxStacks: 5,
-        getDescription: (stacks) => `+${(stacks || 1) * 2}% damage per speed stack${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.moveDamage})` : ''}`,
+        getDescription: (stacks) => `+${(stacks || 1) * 2}%伤害/速度层${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.moveDamage})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.moveDamage || 0;
             player.moveDamageBonus = stacks * 0.02; // 2% per stack
@@ -552,12 +552,12 @@ export const UPGRADES = {
         }
     },
     lowHealthDmg: {
-        name: 'Desperation',
+        name: '绝境求生',
         icon: '☠',
-        description: '+5% damage per 10% missing HP',
+        description: '生命值越低伤害越高',
         category: 'passive',
         maxStacks: 5,
-        getDescription: (stacks) => `+${(stacks || 1) * 5}% damage per 10% missing HP${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.lowHealthDmg})` : ''}`,
+        getDescription: (stacks) => `+${(stacks || 1) * 5}%伤害/每损失10%生命${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.lowHealthDmg})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.lowHealthDmg || 0;
             player.lowHealthDmgBonus = stacks * 0.05; // 5% per stack per 10% missing HP
@@ -565,12 +565,12 @@ export const UPGRADES = {
         }
     },
     killSpeed: {
-        name: 'Bloodlust',
+        name: '嗜血',
         icon: '⚔',
-        description: '+3% speed for 3s on kill',
+        description: '击杀后短时间内攻速提升',
         category: 'passive',
         maxStacks: 5,
-        getDescription: (stacks) => `+${(stacks || 1) * 3}% speed for 3s on kill${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.killSpeed})` : ''}`,
+        getDescription: (stacks) => `击杀后+${(stacks || 1) * 3}%速度持续3秒${stacks > 0 ? ` (${stacks}/${UPGRADE_STACK_LIMITS.killSpeed})` : ''}`,
         apply: (player) => {
             const stacks = player.upgradeStacks?.killSpeed || 0;
             player.killSpeedBonus = stacks * 0.03; // 3% per stack

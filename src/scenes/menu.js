@@ -242,7 +242,7 @@ export function setupMenuScene(k) {
         ]);
 
         // Player name (with fallback for null/undefined)
-        const playerName = getPlayerName() || 'Player';
+        const playerName = getPlayerName() || '玩家';
         const displayName = playerName.length > 16 ? playerName.substring(0, 16) + '..' : playerName;
         const infoX = portraitX + portraitSize / 2 + 10;
         k.add([
@@ -257,7 +257,7 @@ export function setupMenuScene(k) {
         // Level
         const playerLevel = getPlayerLevel();
         k.add([
-            k.text(`Lv.${playerLevel}`, { size: UI_TEXT_SIZES.SMALL - 2 }),
+            k.text(`等级${playerLevel}`, { size: UI_TEXT_SIZES.SMALL - 2 }),
             k.pos(infoX, profileCardY + 32),
             k.anchor('left'),
             k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -518,7 +518,7 @@ export function setupMenuScene(k) {
         const inviteCodeY = slotsStartY + (4 * (slotHeight + slotSpacing)) + 6;
 
         k.add([
-            k.text('Code:', { size: UI_TEXT_SIZES.SMALL - 2 }),
+            k.text('邀请码:', { size: UI_TEXT_SIZES.SMALL - 2 }),
             k.pos(partyPanelX + 8, inviteCodeY),
             k.anchor('left'),
             k.color(...UI_COLORS.TEXT_SECONDARY),
@@ -551,7 +551,7 @@ export function setupMenuScene(k) {
         // Join Party button
         const joinButtonY = inviteCodeY + 22;
         const joinButton = createMenuButton(
-            k, 'JOIN PARTY', partyPanelX + partyPanelWidth / 2, joinButtonY,
+            k, '加入队伍', partyPanelX + partyPanelWidth / 2, joinButtonY,
             partyPanelWidth - 20, 28, UI_TEXT_SIZES.SMALL
         );
         joinButton.onClick(() => {
@@ -578,7 +578,7 @@ export function setupMenuScene(k) {
             if (findMatchLabel && findMatchLabel.exists()) k.destroy(findMatchLabel);
 
             const searching = isMatchmaking();
-            const buttonText = searching ? 'CANCEL SEARCH' : 'FIND MATCH';
+            const buttonText = searching ? '取消搜索' : '寻找对手';
             const buttonColor = searching ? [150, 120, 50] : [60, 80, 120];
             const buttonHoverColor = searching ? [180, 150, 70] : [80, 110, 160];
             const outlineColor = searching ? [200, 180, 80] : [80, 120, 180];
@@ -728,7 +728,7 @@ export function setupMenuScene(k) {
                 readyButtonElements.push(readyBg);
 
                 const readyLabel = k.add([
-                    k.text(isReady ? '✓ READY' : 'READY UP', { size: UI_TEXT_SIZES.SMALL - 2 }),
+                    k.text(isReady ? '✓ 已准备' : '准备', { size: UI_TEXT_SIZES.SMALL - 2 }),
                     k.pos(partyPanelX + partyPanelWidth / 2, readyButtonY),
                     k.anchor('center'),
                     k.color(isReady ? 150 : 100, isReady ? 255 : 150, isReady ? 150 : 200),
@@ -774,7 +774,7 @@ export function setupMenuScene(k) {
 
                 if (countdown.active) {
                     countdownDisplay = k.add([
-                        k.text(`Starting in ${countdownSeconds}...`, { size: UI_TEXT_SIZES.SMALL - 2 }),
+                        k.text(`${countdownSeconds}秒后开始...`, { size: UI_TEXT_SIZES.SMALL - 2 }),
                         k.pos(partyPanelX + partyPanelWidth / 2, readyButtonY + 20),
                         k.anchor('center'),
                         k.color(...UI_COLORS.SUCCESS),
@@ -832,7 +832,7 @@ export function setupMenuScene(k) {
         ]);
 
         k.add([
-            k.text('DAILY RUN', { size: UI_TEXT_SIZES.SMALL }),
+            k.text('每日挑战', { size: UI_TEXT_SIZES.SMALL }),
             k.pos(dailyPanelX + dailyPanelWidth / 2, dailyRunY + 12),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -863,7 +863,7 @@ export function setupMenuScene(k) {
 
         if (dailyInfo.completed) {
             k.add([
-                k.text('COMPLETED', { size: UI_TEXT_SIZES.SMALL - 2 }),
+                k.text('已完成', { size: UI_TEXT_SIZES.SMALL - 2 }),
                 k.pos(dailyPanelX + dailyPanelWidth / 2, dailyRunY + 95),
                 k.anchor('center'),
                 k.color(...UI_COLORS.SUCCESS),
@@ -872,7 +872,7 @@ export function setupMenuScene(k) {
             ]);
         } else if (dailyDisabledInMultiplayer) {
             k.add([
-                k.text('SOLO ONLY', { size: UI_TEXT_SIZES.SMALL - 2 }),
+                k.text('仅限单人', { size: UI_TEXT_SIZES.SMALL - 2 }),
                 k.pos(dailyPanelX + dailyPanelWidth / 2, dailyRunY + 95),
                 k.anchor('center'),
                 k.color(...UI_COLORS.TEXT_DISABLED),
@@ -892,7 +892,7 @@ export function setupMenuScene(k) {
             ]);
 
             k.add([
-                k.text('PLAY', { size: UI_TEXT_SIZES.SMALL }),
+                k.text('开始', { size: UI_TEXT_SIZES.SMALL }),
                 k.pos(dailyPanelX + dailyPanelWidth / 2, dailyRunY + 95),
                 k.anchor('center'),
                 k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -943,7 +943,7 @@ export function setupMenuScene(k) {
         ]);
 
         k.add([
-            k.text('LEADERBOARDS', { size: UI_TEXT_SIZES.SMALL }),
+            k.text('排行榜', { size: UI_TEXT_SIZES.SMALL }),
             k.pos(rightColumnX + LAYOUT.RIGHT_COLUMN_WIDTH / 2, leaderboardsY + 15),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -960,7 +960,7 @@ export function setupMenuScene(k) {
         ]);
 
         k.add([
-            k.text('VIEW', { size: UI_TEXT_SIZES.SMALL - 2 }),
+            k.text('查看', { size: UI_TEXT_SIZES.SMALL - 2 }),
             k.pos(rightColumnX + LAYOUT.RIGHT_COLUMN_WIDTH / 2, leaderboardsY + 80),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_SECONDARY),
@@ -1057,7 +1057,7 @@ export function setupMenuScene(k) {
         const { XL, LG } = UI_SIZES.BUTTON;
 
         const playButton = createMenuButton(
-            k, 'ACTION!', centerX, buttonStartY,
+            k, '开始游戏', centerX, buttonStartY,
             XL.width, XL.height, UI_TEXT_SIZES.H1
         );
         playButton.onClick(() => {
@@ -1079,7 +1079,7 @@ export function setupMenuScene(k) {
         updateStartButtonState();
 
         const characterButton = createMenuButton(
-            k, 'CONTESTANTS', centerX, buttonStartY + buttonSpacing,
+            k, '角色选择', centerX, buttonStartY + buttonSpacing,
             LG.width, LG.height, UI_TEXT_SIZES.H2
         );
         characterButton.onClick(() => {
@@ -1132,7 +1132,7 @@ export function setupMenuScene(k) {
         }
 
         const shopButton = createMenuButton(
-            k, 'MERCH', centerX, buttonStartY + buttonSpacing * 2,
+            k, '商店', centerX, buttonStartY + buttonSpacing * 2,
             LG.width, LG.height, UI_TEXT_SIZES.H2
         );
         shopButton.onClick(() => {
@@ -1141,7 +1141,7 @@ export function setupMenuScene(k) {
         });
 
         const statisticsButton = createMenuButton(
-            k, 'RATINGS', centerX, buttonStartY + buttonSpacing * 3,
+            k, '排行成就', centerX, buttonStartY + buttonSpacing * 3,
             LG.width, LG.height, UI_TEXT_SIZES.H2
         );
         statisticsButton.onClick(() => {
@@ -1150,7 +1150,7 @@ export function setupMenuScene(k) {
         });
 
         const settingsButton = createMenuButton(
-            k, 'OPTIONS', centerX, buttonStartY + buttonSpacing * 4,
+            k, '设置', centerX, buttonStartY + buttonSpacing * 4,
             LG.width, LG.height, UI_TEXT_SIZES.H2
         );
         settingsButton.onClick(() => {

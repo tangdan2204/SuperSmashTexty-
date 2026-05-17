@@ -45,9 +45,9 @@ const CURRENCY_ICONS = ['$', '¢', '£', '¥', '€'];
 
 // Award definitions
 const AWARDS = [
-    { id: 'slayer', title: 'Slayer', icon: '⚔', desc: 'Most enemy kills', check: (stats) => stats.kills || 0, color: [255, 100, 100] },
-    { id: 'collector', title: 'Hoarder', icon: '💰', desc: 'Most credits collected', check: (stats) => stats.creditsPickedUp || 0, color: [255, 215, 0] },
-    { id: 'bossBuster', title: 'Boss Buster', icon: '👑', desc: 'Most bosses defeated', check: (stats) => stats.bossesKilled || 0, color: [255, 150, 50] }
+    { id: 'slayer', title: '杀戮者', icon: '⚔', desc: '击杀最多敌人', check: (stats) => stats.kills || 0, color: [255, 100, 100] },
+    { id: 'collector', title: '囤积者', icon: '💰', desc: '收集最多银币', check: (stats) => stats.creditsPickedUp || 0, color: [255, 215, 0] },
+    { id: 'bossBuster', title: 'Boss终结者', icon: '👑', desc: '击败最多Boss', check: (stats) => stats.bossesKilled || 0, color: [255, 150, 50] }
 ];
 
 export function setupGameOverScene(k) {
@@ -97,7 +97,7 @@ export function setupGameOverScene(k) {
         });
 
         // Submit to global online leaderboards (all players submit their own scores)
-        const playerName = getPlayerName() || 'Anonymous';
+        const playerName = getPlayerName() || '匿名玩家';
         const inMultiplayer = isMultiplayerActive();
 
         // All players submit to online leaderboards - each player's score matters
@@ -164,7 +164,7 @@ export function setupGameOverScene(k) {
 
         // Title
         k.add([
-            k.text('BROADCAST TERMINATED', { size: 28 }),
+            k.text('直播终止', { size: 28 }),
             k.pos(k.width() / 2, headerY),
             k.anchor('center'),
             k.color(...UI_COLORS.DANGER),
@@ -174,7 +174,7 @@ export function setupGameOverScene(k) {
 
         // Score display - large and centered
         k.add([
-            k.text(`SCORE: ${formatScore(score)}`, { size: 22 }),
+            k.text(`分数: ${formatScore(score)}`, { size: 22 }),
             k.pos(k.width() / 2, headerY + 32),
             k.anchor('center'),
             k.color(...UI_COLORS.GOLD),
@@ -184,7 +184,7 @@ export function setupGameOverScene(k) {
 
         // Run summary - compact horizontal
         k.add([
-            k.text(`Floor ${runStats.floorsReached} | ${runStats.roomsCleared} Rooms | ${runStats.enemiesKilled} Kills | ${Math.floor(duration)}s`, { size: 12 }),
+            k.text(`第${runStats.floorsReached}层 | ${runStats.roomsCleared}房间 | ${runStats.enemiesKilled}击杀 | ${Math.floor(duration)}秒`, { size: 12 }),
             k.pos(k.width() / 2, headerY + 54),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_SECONDARY),
@@ -200,11 +200,11 @@ export function setupGameOverScene(k) {
         // Build rank display strings
         let localRankText = '';
         if (isDailyRun && leaderboardResult.dailyRank) {
-            localRankText = `Daily #${leaderboardResult.dailyRank}`;
-            if (leaderboardResult.dailyRank === 1) localRankText += ' NEW RECORD!';
+            localRankText = `每日排名 #${leaderboardResult.dailyRank}`;
+            if (leaderboardResult.dailyRank === 1) localRankText += ' 新纪录！';
         } else if (leaderboardResult.rank) {
-            localRankText = `All-Time #${leaderboardResult.rank}`;
-            if (leaderboardResult.isNewBest) localRankText += ' PERSONAL BEST!';
+            localRankText = `历史排名 #${leaderboardResult.rank}`;
+            if (leaderboardResult.isNewBest) localRankText += ' 个人最佳！';
         }
 
         if (localRankText) {
@@ -220,7 +220,7 @@ export function setupGameOverScene(k) {
 
         // Global rank - fetched async
         const globalRankLabel = k.add([
-            k.text('Global: ...', { size: 14 }),
+            k.text('全球: ...', { size: 14 }),
             k.pos(k.width() / 2 + 120, rankRowY),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_DISABLED),
@@ -231,12 +231,12 @@ export function setupGameOverScene(k) {
         getGlobalRank(playerName, score).then(result => {
             if (!globalRankLabel.exists()) return;
             if (result.error) {
-                globalRankLabel.text = 'Global: offline';
+                globalRankLabel.text = '全球: 离线';
             } else if (result.rank) {
-                globalRankLabel.text = `Global #${result.rank} of ${result.total}`;
+                globalRankLabel.text = `全球 #${result.rank} / ${result.total}`;
                 globalRankLabel.color = k.rgb(...UI_COLORS.GOLD);
             } else {
-                globalRankLabel.text = 'Global: unranked';
+                globalRankLabel.text = '全球: 未上榜';
             }
         });
 
@@ -315,7 +315,7 @@ export function setupGameOverScene(k) {
         let currentY = tableStartY + 8;
 
         // Row labels
-        const rowLabels = ['', 'Kills', 'Credits', 'Bosses', 'Awards', 'Achievements'];
+        const rowLabels = ['', '击杀', '银币', 'Boss', '奖项', '成就'];
 
         // Header row - Player icons and names
         playersToShow.forEach((player, idx) => {
@@ -350,9 +350,9 @@ export function setupGameOverScene(k) {
 
         // Data rows
         const rowData = [
-            { label: 'Kills', getValue: (p) => p.kills || 0, color: UI_COLORS.DANGER },
-            { label: 'Credits', getValue: (p) => p.creditsPickedUp || 0, color: UI_COLORS.GOLD },
-            { label: 'Bosses', getValue: (p) => p.bossesKilled || 0, color: [255, 150, 50] }
+            { label: '击杀', getValue: (p) => p.kills || 0, color: UI_COLORS.DANGER },
+            { label: '银币', getValue: (p) => p.creditsPickedUp || 0, color: UI_COLORS.GOLD },
+            { label: 'Boss', getValue: (p) => p.bossesKilled || 0, color: [255, 150, 50] }
         ];
 
         rowData.forEach(row => {
@@ -386,7 +386,7 @@ export function setupGameOverScene(k) {
 
         // Awards row
         k.add([
-            k.text('Awards', { size: 12 }),
+            k.text('奖项', { size: 12 }),
             k.pos(tableX + 10, currentY),
             k.anchor('left'),
             k.color(...UI_COLORS.TEXT_SECONDARY),
@@ -451,7 +451,7 @@ export function setupGameOverScene(k) {
             ]));
 
             // Player who earned it (if applicable)
-            const earnedText = numPlayers > 1 ? `Earned by ${player.name}` : 'Earned this run';
+            const earnedText = numPlayers > 1 ? `${player.name} 获得` : '本局获得';
             elements.push(k.add([
                 k.text(earnedText, { size: 10 }),
                 k.pos(modalX, modalY + 34),
@@ -531,7 +531,7 @@ export function setupGameOverScene(k) {
 
         // Achievements row - clickable icons
         k.add([
-            k.text('Unlocks', { size: 12 }),
+            k.text('解锁', { size: 12 }),
             k.pos(tableX + 10, currentY),
             k.anchor('left'),
             k.color(...UI_COLORS.TEXT_SECONDARY),
@@ -759,7 +759,7 @@ export function setupGameOverScene(k) {
 
         // Kill panel title
         k.add([
-            k.text('STAFF', { size: 14 }),
+            k.text('击杀', { size: 14 }),
             k.pos(killPanelX, killPanelY + 12),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -767,7 +767,7 @@ export function setupGameOverScene(k) {
             k.z(UI_Z_LAYERS.MODAL + 1)
         ]);
         k.add([
-            k.text('TERMINATED', { size: 14 }),
+            k.text('统计', { size: 14 }),
             k.pos(killPanelX, killPanelY + 26),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -787,7 +787,7 @@ export function setupGameOverScene(k) {
 
         if (sortedKills.length === 0) {
             k.add([
-                k.text('No staff', { size: 12 }),
+                k.text('暂无', { size: 12 }),
                 k.pos(killPanelX, killY + 10),
                 k.anchor('center'),
                 k.color(...UI_COLORS.TEXT_DISABLED),
@@ -795,7 +795,7 @@ export function setupGameOverScene(k) {
                 k.z(UI_Z_LAYERS.MODAL + 1)
             ]);
             k.add([
-                k.text('harmed', { size: 12 }),
+                k.text('击杀', { size: 12 }),
                 k.pos(killPanelX, killY + 24),
                 k.anchor('center'),
                 k.color(...UI_COLORS.TEXT_DISABLED),
@@ -848,7 +848,7 @@ export function setupGameOverScene(k) {
             if (sortedKills.length > showCount) {
                 const remaining = sortedKills.slice(showCount).reduce((sum, [_, c]) => sum + c, 0);
                 k.add([
-                    k.text(`+${remaining} more`, { size: 10 }),
+                    k.text(`+${remaining} 其他`, { size: 10 }),
                     k.pos(killPanelX, killY),
                     k.anchor('center'),
                     k.color(...UI_COLORS.TEXT_DISABLED),
@@ -876,7 +876,7 @@ export function setupGameOverScene(k) {
         // XP earned (right side)
         const xpColor = leveledUp ? UI_COLORS.SUCCESS : [150, 200, 255];
         const xpText = leveledUp
-            ? `+${xpEarned} XP (LEVEL UP!)`
+            ? `+${xpEarned} XP (升级了！)`
             : `+${xpEarned} XP`;
         k.add([
             k.text(xpText, { size: 16 }),
@@ -894,7 +894,7 @@ export function setupGameOverScene(k) {
         const nextLevelXP = getXPForNextLevel();
 
         k.add([
-            k.text(`Level ${currentLevel}`, { size: 12 }),
+            k.text(`等级 ${currentLevel}`, { size: 12 }),
             k.pos(k.width() / 2, footerY + 18),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -947,7 +947,7 @@ export function setupGameOverScene(k) {
         const buttonGap = 20;
 
         const playAgainEnabled = !inMultiplayer || isHostPlayer;
-        const playAgainText = inMultiplayer && !isHostPlayer ? 'Waiting...' : 'PLAY AGAIN';
+        const playAgainText = inMultiplayer && !isHostPlayer ? '等待中...' : '重试';
 
         // Use MD size for play again (more reasonable) and SM for menu
         const playAgainWidth = MD.width;
@@ -996,7 +996,7 @@ export function setupGameOverScene(k) {
         ]);
 
         const menuLabel = k.add([
-            k.text('MENU', { size: UI_TEXT_SIZES.SMALL }),
+            k.text('菜单', { size: UI_TEXT_SIZES.SMALL }),
             k.pos(buttonsStartX + playAgainWidth + buttonGap + menuWidth / 2, buttonY),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_SECONDARY),

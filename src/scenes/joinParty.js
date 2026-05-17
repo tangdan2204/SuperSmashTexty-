@@ -33,7 +33,7 @@ export function initJoinPartyScene(k) {
 
         // Title
         k.add([
-            k.text('Join Party', { size: UI_TEXT_SIZES.TITLE }),
+            k.text('加入队伍', { size: UI_TEXT_SIZES.TITLE }),
             k.pos(k.width() / 2, 100),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -43,7 +43,7 @@ export function initJoinPartyScene(k) {
 
         // Instruction
         k.add([
-            k.text('Enter 6-digit invite code:', { size: UI_TEXT_SIZES.LABEL }),
+            k.text('输入6位邀请码：', { size: UI_TEXT_SIZES.LABEL }),
             k.pos(k.width() / 2, 180),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_SECONDARY),
@@ -74,7 +74,7 @@ export function initJoinPartyScene(k) {
 
         // Instructions text
         k.add([
-            k.text('Press ESC or click Cancel to go back', { size: UI_TEXT_SIZES.SMALL - 2 }),
+            k.text('按 ESC 或点击取消返回', { size: UI_TEXT_SIZES.SMALL - 2 }),
             k.pos(k.width() / 2, k.height() - 100),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_DISABLED),
@@ -152,13 +152,13 @@ export function initJoinPartyScene(k) {
             const code = inputCode.trim();
 
             if (!isValidInviteCode(code)) {
-                errorMsg.text = 'Invalid invite code format';
+                errorMsg.text = '邀请码格式错误';
                 errorMsg.color = k.rgb(255, 100, 100);
                 return;
             }
 
             isJoining = true;
-            errorMsg.text = 'Joining party...';
+            errorMsg.text = '加入队伍中...';
             errorMsg.color = k.rgb(...UI_COLORS.GOLD);
 
             try {
@@ -170,7 +170,7 @@ export function initJoinPartyScene(k) {
                         return;
                     }
                     playMenuSelect();
-                    errorMsg.text = 'Successfully joined party!';
+                    errorMsg.text = '成功加入队伍！';
                     errorMsg.color = k.rgb(...UI_COLORS.SUCCESS);
 
                     // Wait a moment then go to menu (now in party)
@@ -181,7 +181,7 @@ export function initJoinPartyScene(k) {
                     });
                 } else {
                     isJoining = false;
-                    errorMsg.text = 'Failed to join party. Check the code and try again.';
+                    errorMsg.text = '加入队伍失败。请检查邀请码后重试。';
                     errorMsg.color = k.rgb(255, 100, 100);
                     inputCode = '';
                     updateDisplay();
@@ -189,7 +189,7 @@ export function initJoinPartyScene(k) {
             } catch (error) {
                 isJoining = false;
                 console.error('[JoinParty] Error joining party:', error);
-                errorMsg.text = 'Connection error. Please try again.';
+                errorMsg.text = '连接错误。请重试。';
                 errorMsg.color = k.rgb(255, 100, 100);
                 inputCode = '';
                 updateDisplay();
@@ -210,7 +210,7 @@ export function initJoinPartyScene(k) {
         ]);
 
         const cancelText = k.add([
-            k.text('CANCEL', { size: UI_TEXT_SIZES.BODY }),
+            k.text('取消', { size: UI_TEXT_SIZES.BODY }),
             k.pos(k.width() / 2, k.height() - 180),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_SECONDARY),

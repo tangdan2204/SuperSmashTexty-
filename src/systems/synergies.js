@@ -6,8 +6,8 @@ import { showSynergyHint } from './tutorial.js';
 export const SYNERGIES = {
     // Multi-shot + Spread Shot = Wider spread pattern
     shotgun: {
-        name: 'Shotgun Blast',
-        description: 'Multi-Shot + Spread Shot: Wider spread angle',
+        name: '霰弹齐射',
+        description: '多重射击 + 散射: 更宽散射角度',
         required: ['multiShot', 'spreadShot'],
         apply: (player) => {
             // Increase spread angle when both upgrades are present
@@ -19,8 +19,8 @@ export const SYNERGIES = {
     
     // Piercing + Multi-shot = Multiple piercing projectiles
     volley: {
-        name: 'Piercing Volley',
-        description: 'Piercing + Multi-Shot: All projectiles pierce',
+        name: '穿透齐射',
+        description: '穿透弹 + 多重射击: 所有弹丸穿透',
         required: ['piercing', 'multiShot'],
         apply: (player) => {
             // Ensure all projectiles from multi-shot have piercing
@@ -33,8 +33,8 @@ export const SYNERGIES = {
     
     // Crit Chance + Crit Damage = Enhanced critical system
     criticalMaster: {
-        name: 'Critical Master',
-        description: 'Critical Strike + Critical Power: +25% crit chance, +100% crit damage',
+        name: '暴击大师',
+        description: '暴击率 + 暴击伤害: +25%暴击率, +100%暴击伤害',
         required: ['critChance', 'critDamage'],
         apply: (player) => {
             if (player.critChance > 0 && player.critDamage > 2.0) {
@@ -46,8 +46,8 @@ export const SYNERGIES = {
     
     // Multi-shot + Fire Rate = Rapid multi-fire
     barrage: {
-        name: 'Barrage',
-        description: 'Multi-Shot + Fire Rate: Faster multi-projectile firing',
+        name: '弹幕',
+        description: '多重射击 + 射速: 多弹射击更快',
         required: ['multiShot', 'fireRate'],
         apply: (player) => {
             if (player.projectileCount > 1) {
@@ -58,8 +58,8 @@ export const SYNERGIES = {
     
     // Piercing + Damage = Armor-piercing rounds
     armorPiercing: {
-        name: 'Armor Piercing',
-        description: 'Piercing + Damage Boost: Piercing projectiles deal +50% damage',
+        name: '穿甲弹',
+        description: '穿透弹 + 伤害提升: 穿透弹+50%伤害',
         required: ['piercing', 'damage'],
         apply: (player) => {
             if (player.piercing > 0) {
@@ -71,8 +71,8 @@ export const SYNERGIES = {
     
     // Defense + Health = Tank build
     tank: {
-        name: 'Tank',
-        description: 'Armor + Max Health: +50% max health, +5 defense',
+        name: '坦克',
+        description: '护甲 + 生命上限: +50%最大生命值, +5防御',
         required: ['defense', 'health'],
         apply: (player) => {
             player.maxHealth = Math.floor(player.maxHealth * 1.5); // 50% more health
@@ -83,8 +83,8 @@ export const SYNERGIES = {
     
     // Speed + Pickup Radius = Loot vacuum
     vacuum: {
-        name: 'Loot Vacuum',
-        description: 'Movement Speed + Pickup Radius: +100% pickup radius',
+        name: '战利品吸尘器',
+        description: '移动加速 + 拾取范围: +100%拾取范围',
         required: ['speed', 'pickupRadius'],
         apply: (player) => {
             if (player.pickupRadius > 0) {
@@ -95,8 +95,8 @@ export const SYNERGIES = {
     
     // XP Gain + Pickup Radius = XP magnet
     xpMagnet: {
-        name: 'XP Magnet',
-        description: 'XP Gain + Pickup Radius: +50% XP multiplier',
+        name: '经验磁铁',
+        description: '经验加成 + 拾取范围: +50%经验倍率',
         required: ['xpGain', 'pickupRadius'],
         apply: (player) => {
             if (player.xpMultiplier) {
@@ -109,8 +109,8 @@ export const SYNERGIES = {
 
     // Glass Canon: Trade health for massive damage
     glassCannon: {
-        name: 'Glass Cannon',
-        description: 'Damage x3 + Health: -25% max HP, +100% damage',
+        name: '玻璃大炮',
+        description: '伤害x3 + 生命: -25%最大生命, +100%伤害',
         required: ['damage', 'damage', 'damage', 'health'], // Requires 3x damage upgrades
         requiredCounts: { damage: 3, health: 1 }, // Alternative counting method
         apply: (player) => {
@@ -135,8 +135,8 @@ export const SYNERGIES = {
 
     // Vampiric Rounds: Heal on critical hits
     vampiricRounds: {
-        name: 'Vampiric Rounds',
-        description: 'Crit Chance + Crit Damage + Health: Heal 5% of crit damage',
+        name: '吸血弹',
+        description: '暴击率 + 暴击伤害 + 生命: 暴击治疗5%暴击伤害',
         required: ['critChance', 'critDamage', 'health'],
         apply: (player) => {
             // Enable vampiric healing on crits
@@ -147,8 +147,8 @@ export const SYNERGIES = {
 
     // Bullet Time: Faster fire rate while moving
     bulletTime: {
-        name: 'Bullet Time',
-        description: 'Speed + Fire Rate: +20% fire rate while moving',
+        name: '子弹时间',
+        description: '移速 + 射速: 移动时+20%射速',
         required: ['speed', 'fireRate'],
         apply: (player) => {
             // Enable bullet time effect
@@ -163,8 +163,8 @@ export const SYNERGIES = {
 
     // Berserker: Power boost at low health
     berserker: {
-        name: 'Berserker',
-        description: 'Damage x3 + Speed x2: +50% damage/speed below 30% HP',
+        name: '狂战士',
+        description: '伤害x3 + 移速x2: 30%生命以下+50%伤害/移速',
         requiredCounts: { damage: 3, speed: 2 },
         apply: (player) => {
             player.berserkerEnabled = true;
@@ -176,8 +176,8 @@ export const SYNERGIES = {
 
     // Deadeye: Extended crit range
     deadeye: {
-        name: 'Deadeye',
-        description: 'Crit x2 + Range x2: Crits have +50% range',
+        name: '神射手',
+        description: '暴击x2 + 射程x2: 暴击+50%射程',
         requiredCounts: { critChance: 2, range: 2 },
         apply: (player) => {
             player.deadeyeEnabled = true;
@@ -187,8 +187,8 @@ export const SYNERGIES = {
 
     // Survivalist: Out of combat regen
     survivor: {
-        name: 'Survivalist',
-        description: 'Health x2 + Defense x2: Regen 1% HP/sec out of combat',
+        name: '求生者',
+        description: '生命x2 + 防御x2: 脱战每秒回复1%生命',
         requiredCounts: { health: 2, defense: 2 },
         apply: (player) => {
             player.survivalistEnabled = true;
@@ -200,8 +200,8 @@ export const SYNERGIES = {
 
     // Retribution: Thorns ignore armor
     thornMaster: {
-        name: 'Retribution',
-        description: 'Thorns x3 + Defense x2: Thorns ignore enemy armor',
+        name: '因果报应',
+        description: '荆棘x3 + 防御x2: 荆棘无视敌人护甲',
         requiredCounts: { thorns: 3, defense: 2 },
         apply: (player) => {
             player.thornsIgnoreArmor = true;
@@ -212,8 +212,8 @@ export const SYNERGIES = {
 
     // Vampire Lord: Enhanced lifesteal on crits
     vampireLord: {
-        name: 'Vampire Lord',
-        description: 'Lifesteal x3 + Crit Dmg x2: Crits heal 3x lifesteal',
+        name: '吸血领主',
+        description: '生命偷取x3 + 暴击伤害x2: 暴击3倍生命偷取',
         requiredCounts: { lifesteal: 3, critDamage: 2 },
         apply: (player) => {
             player.vampireLordEnabled = true;
@@ -223,8 +223,8 @@ export const SYNERGIES = {
 
     // Executioner: Execute low health enemies
     executioner: {
-        name: 'Executioner',
-        description: 'Damage x2 + Piercing x2: +100% damage to enemies <25% HP',
+        name: '处刑者',
+        description: '伤害x2 + 穿透x2: 对25%生命以下敌人+100%伤害',
         requiredCounts: { damage: 2, piercing: 2 },
         apply: (player) => {
             player.executionerEnabled = true;
@@ -235,8 +235,8 @@ export const SYNERGIES = {
 
     // Speed Demon: Fire rate scales with speed
     speedDemon: {
-        name: 'Speed Demon',
-        description: 'Speed x3 + Fire Rate x2: +1% fire rate per speed stack',
+        name: '极速恶魔',
+        description: '移速x3 + 射速x2: 每层移速+1%射速',
         requiredCounts: { speed: 3, fireRate: 2 },
         apply: (player) => {
             player.speedDemonEnabled = true;
@@ -246,8 +246,8 @@ export const SYNERGIES = {
 
     // Fortress: Complete immunity during invulnerability
     fortress: {
-        name: 'Fortress',
-        description: 'Health x3 + Invuln x2: Immunity blocks all damage sources',
+        name: '堡垒',
+        description: '生命x3 + 无敌x2: 无敌期间完全免疫所有伤害',
         requiredCounts: { health: 3, invulnTime: 2 },
         apply: (player) => {
             player.fortressEnabled = true;
@@ -321,7 +321,7 @@ export function checkAndApplySynergies(k, player) {
 // Show synergy notification
 function showSynergyNotification(k, synergy) {
     const notification = k.add([
-        k.text(`SYNERGY: ${synergy.name}`, { size: 20 }),
+        k.text(`协同: ${synergy.name}`, { size: 20 }),
         k.pos(k.width() / 2, 150),
         k.anchor('center'),
         k.color(255, 200, 0), // Gold color for synergies

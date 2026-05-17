@@ -34,13 +34,13 @@ function getUnlockText(char) {
     if (!char.unlockRequirement) return null;
 
     if (char.unlockRequirement.type === 'floor') {
-        return `Unlock: Complete ${UI_TERMS.FLOOR} ${char.unlockRequirement.value}`;
+        return `解锁条件: 通过第${char.unlockRequirement.value}${UI_TERMS.FLOOR}`;
     } else if (char.unlockRequirement.type === 'achievement') {
         const achievement = ACHIEVEMENTS[char.unlockRequirement.value];
         if (achievement) {
-            return `Unlock: ${achievement.name}`;
+            return `解锁条件: ${achievement.name}`;
         }
-        return `Unlock: Achievement required`;
+        return `解锁条件: 需要成就`;
     }
     return null;
 }
@@ -554,7 +554,7 @@ export function setupCharacterSelectScene(k) {
 
             // Stats with visual bars
             const statsLabel = k.add([
-                k.text('Stats:', { size: UI_TEXT_SIZES.LABEL }),
+                k.text('属性:', { size: UI_TEXT_SIZES.LABEL }),
                 k.pos(rightPanelX + 20, detailY),
                 k.anchor('left'),
                 k.color(...UI_COLORS.WARNING),
@@ -611,7 +611,7 @@ export function setupCharacterSelectScene(k) {
             // Currently selected indicator (show if viewing the confirmed selection)
             if (viewedCharacterKey === confirmedCharacterKey) {
                 const selectedIndicator = k.add([
-                    k.text('✓ CURRENT SELECTION', { size: UI_TEXT_SIZES.LABEL }),
+                    k.text('✓ 当前选择', { size: UI_TEXT_SIZES.LABEL }),
                     k.pos(rightPanelX + rightPanelWidth / 2, detailY),
                     k.anchor('center'),
                     k.color(...UI_COLORS.SUCCESS),
@@ -673,7 +673,7 @@ export function setupCharacterSelectScene(k) {
         ]);
 
         k.add([
-            k.text(formatButtonText('Cancel'), { size: UI_TEXT_SIZES.BODY }),
+            k.text(formatButtonText('返回'), { size: UI_TEXT_SIZES.BODY }),
             k.pos(k.width() / 2 - 70, k.height() - 40),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_SECONDARY),
@@ -716,7 +716,7 @@ export function setupCharacterSelectScene(k) {
             confirmButtonItems.push(confirmButton);
 
             confirmText = k.add([
-                k.text(formatButtonText('Confirm'), { size: UI_TEXT_SIZES.BODY }),
+                k.text(formatButtonText('确认'), { size: UI_TEXT_SIZES.BODY }),
                 k.pos(k.width() / 2 + 70, k.height() - 40),
                 k.anchor('center'),
                 k.color(...(isViewedUnlocked ? UI_COLORS.TEXT_PRIMARY : UI_COLORS.TEXT_DISABLED)),

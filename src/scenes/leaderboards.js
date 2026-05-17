@@ -55,7 +55,7 @@ export function setupLeaderboardsScene(k) {
 
         // Title
         k.add([
-            k.text('LEADERBOARDS', { size: UI_TEXT_SIZES.TITLE }),
+            k.text('排行榜', { size: UI_TEXT_SIZES.TITLE }),
             k.pos(k.width() / 2, 50),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -133,10 +133,10 @@ export function setupLeaderboardsScene(k) {
             k.get('tab').forEach(t => k.destroy(t));
             tabs = [];
 
-            const tab1 = createTab('DAILY', TABS.DAILY, startX + tabWidth / 2);
-            const tab2 = createTab('ALL-TIME', TABS.ALL_TIME, startX + tabWidth + tabSpacing + tabWidth / 2);
-            const tab3 = createTab('PERSONAL', TABS.PERSONAL, startX + (tabWidth + tabSpacing) * 2 + tabWidth / 2);
-            const tab4 = createTab('GLOBAL', TABS.GLOBAL, startX + (tabWidth + tabSpacing) * 3 + tabWidth / 2);
+            const tab1 = createTab('今日', TABS.DAILY, startX + tabWidth / 2);
+            const tab2 = createTab('历史', TABS.ALL_TIME, startX + tabWidth + tabSpacing + tabWidth / 2);
+            const tab3 = createTab('个人', TABS.PERSONAL, startX + (tabWidth + tabSpacing) * 2 + tabWidth / 2);
+            const tab4 = createTab('全球', TABS.GLOBAL, startX + (tabWidth + tabSpacing) * 3 + tabWidth / 2);
 
             tabs = [tab1, tab2, tab3, tab4];
         }
@@ -181,7 +181,7 @@ export function setupLeaderboardsScene(k) {
 
             // Date and character info
             const dateLabel = k.add([
-                k.text(`Date: ${today}`, { size: UI_TEXT_SIZES.BODY }),
+                k.text(`日期: ${today}`, { size: UI_TEXT_SIZES.BODY }),
                 k.pos(k.width() / 2 - 100, contentY),
                 k.anchor('left'),
                 k.color(...UI_COLORS.TEXT_SECONDARY),
@@ -191,7 +191,7 @@ export function setupLeaderboardsScene(k) {
             contentElements.push(dateLabel);
 
             const charLabel = k.add([
-                k.text(`Character: ${charData.char} ${charData.name}`, { size: UI_TEXT_SIZES.BODY }),
+                k.text(`角色: ${charData.char} ${charData.name}`, { size: UI_TEXT_SIZES.BODY }),
                 k.pos(k.width() / 2 + 50, contentY),
                 k.anchor('left'),
                 k.color(...charData.color),
@@ -207,7 +207,7 @@ export function setupLeaderboardsScene(k) {
             // Entries
             if (allEntries.length === 0) {
                 const noData = k.add([
-                    k.text('No entries yet. Be the first!', { size: UI_TEXT_SIZES.BODY }),
+                    k.text('暂无记录。争做第一人！', { size: UI_TEXT_SIZES.BODY }),
                     k.pos(k.width() / 2, headerY + 60),
                     k.anchor('center'),
                     k.color(...UI_COLORS.TEXT_DISABLED),
@@ -248,7 +248,7 @@ export function setupLeaderboardsScene(k) {
             // Entries
             if (allEntries.length === 0) {
                 const noData = k.add([
-                    k.text('No entries yet. Play a game!', { size: UI_TEXT_SIZES.BODY }),
+                    k.text('暂无记录。先来一局！', { size: UI_TEXT_SIZES.BODY }),
                     k.pos(k.width() / 2, headerY + 60),
                     k.anchor('center'),
                     k.color(...UI_COLORS.TEXT_DISABLED),
@@ -286,7 +286,7 @@ export function setupLeaderboardsScene(k) {
 
             // Header
             const headerY = contentY + 10;
-            const headers = ['Character', 'Best Score', 'Best Floor', 'Best Time'];
+            const headers = ['角色', '最高分', '最高层', '最快时间'];
             const colPositions = [120, 280, 420, 540];
 
             headers.forEach((header, i) => {
@@ -343,7 +343,7 @@ export function setupLeaderboardsScene(k) {
 
                     // Best floor
                     const floorText = k.add([
-                        k.text(`Floor ${bests.bestFloor}`, { size: UI_TEXT_SIZES.BODY }),
+                        k.text(`${bests.bestFloor}层`, { size: UI_TEXT_SIZES.BODY }),
                         k.pos(colPositions[2], rowY),
                         k.anchor('left'),
                         k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -365,7 +365,7 @@ export function setupLeaderboardsScene(k) {
                 } else {
                     // No data
                     const noData = k.add([
-                        k.text('-- no data --', { size: UI_TEXT_SIZES.SMALL }),
+                        k.text('-- 暂无数据 --', { size: UI_TEXT_SIZES.SMALL }),
                         k.pos(colPositions[1], rowY),
                         k.anchor('left'),
                         k.color(...UI_COLORS.TEXT_DISABLED),
@@ -390,7 +390,7 @@ export function setupLeaderboardsScene(k) {
 
             // Show loading state initially
             const loadingText = k.add([
-                k.text('Connecting to global leaderboard...', { size: UI_TEXT_SIZES.BODY }),
+                k.text('连接全球排行榜...', { size: UI_TEXT_SIZES.BODY }),
                 k.pos(k.width() / 2, headerY + 100),
                 k.anchor('center'),
                 k.color(...UI_COLORS.TEXT_SECONDARY),
@@ -437,7 +437,7 @@ export function setupLeaderboardsScene(k) {
                     contentElements.push(retryBg);
 
                     const retryLabel = k.add([
-                        k.text('Try Again', { size: UI_TEXT_SIZES.SMALL }),
+                        k.text('重试', { size: UI_TEXT_SIZES.SMALL }),
                         k.pos(k.width() / 2, headerY + 130),
                         k.anchor('center'),
                         k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -470,7 +470,7 @@ export function setupLeaderboardsScene(k) {
                 // Entries
                 if (entries.length === 0) {
                     const noData = k.add([
-                        k.text('No global entries yet. Be the first!', { size: UI_TEXT_SIZES.BODY }),
+                        k.text('暂无全球记录。争做第一人！', { size: UI_TEXT_SIZES.BODY }),
                         k.pos(k.width() / 2, headerY + 60),
                         k.anchor('center'),
                         k.color(...UI_COLORS.TEXT_DISABLED),
@@ -490,7 +490,7 @@ export function setupLeaderboardsScene(k) {
                 if (result.totalCount > 0) {
                     const totalY = headerY + 40 + (Math.min(entries.length, 10) * 35) + 20;
                     const totalText = k.add([
-                        k.text(`${result.totalCount} player${result.totalCount !== 1 ? 's' : ''} worldwide`, { size: UI_TEXT_SIZES.SMALL }),
+                        k.text(`全球共 ${result.totalCount} 位玩家`, { size: UI_TEXT_SIZES.SMALL }),
                         k.pos(k.width() / 2, totalY),
                         k.anchor('center'),
                         k.color(...UI_COLORS.TEXT_SECONDARY),
@@ -618,7 +618,7 @@ export function setupLeaderboardsScene(k) {
 
         // Render leaderboard header row
         function renderLeaderboardHeader(y) {
-            const headers = ['#', 'Name', 'Score', 'Floor', 'Time'];
+            const headers = ['#', '名称', '分数', '层数', '时间'];
             const colPositions = [80, 150, 350, 470, 560];
 
             headers.forEach((header, i) => {
@@ -735,7 +735,7 @@ export function setupLeaderboardsScene(k) {
         ]);
 
         k.add([
-            k.text('BACK', { size: UI_TEXT_SIZES.SMALL }),
+            k.text('返回', { size: UI_TEXT_SIZES.SMALL }),
             k.pos(k.width() / 2, k.height() - 40),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_SECONDARY),

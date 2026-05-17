@@ -154,14 +154,14 @@ export const UI_BUTTON = {
 export const UI_TERMS = {
     HEALTH: 'HP',             // Use "HP" not "Health"
     EXPERIENCE: 'XP',         // Use "XP" not "Experience"
-    LEVEL: 'Level',           // Capitalize
-    FLOOR: 'Floor',           // Capitalize
-    ROOM: 'Room',             // Capitalize
-    CURRENCY: 'Silver',       // Default currency name (can be overridden)
-    DAMAGE: 'Damage',
-    SPEED: 'Speed',
+    LEVEL: '等级',
+    FLOOR: '层',
+    ROOM: '房间',
+    CURRENCY: '银币',
+    DAMAGE: '伤害',
+    SPEED: '速度',
     BOSS: 'BOSS',             // ALL CAPS for emphasis
-    MINIBOSS: 'MINIBOSS'
+    MINIBOSS: '小BOSS'
 };
 
 // =============================================================================
@@ -203,9 +203,9 @@ export function formatStatLabel(text) {
  */
 export function formatFloorRoom(floor, room, abbreviated = false) {
     if (abbreviated) {
-        return `F${floor} R${room}`;
+        return `${floor}层${room}房`;
     }
-    return `Floor ${floor}, Room ${room}`;
+    return `第${floor}层, 第${room}房`;
 }
 
 /**

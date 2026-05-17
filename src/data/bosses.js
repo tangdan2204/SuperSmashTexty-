@@ -7,7 +7,7 @@
 
 export const BOSS_TYPES = {
     gatekeeper: {
-        name: 'Studio Head',
+        name: '制片厂老板',
         coreChar: 'GG',
         armorChar: '[]',
         shieldChar: '{}',
@@ -24,7 +24,7 @@ export const BOSS_TYPES = {
         shieldRegenRate: 0, // HP per second (0 = no regen)
     },
     swarmQueen: {
-        name: 'Showrunner',
+        name: '节目总监',
         coreChar: 'QQ',
         armorChar: '[]',
         shieldChar: '{}',
@@ -41,7 +41,7 @@ export const BOSS_TYPES = {
         shieldRegenRate: 0, // HP per second (0 = no regen)
     },
     twinGuardianMelee: {
-        name: 'Co-Host (Melee)',
+        name: '联合主持 (近战)',
         coreChar: '▶',
         armorChar: '[]',
         shieldChar: '{}',
@@ -59,7 +59,7 @@ export const BOSS_TYPES = {
         shieldRegenRate: 0, // HP per second (0 = no regen)
     },
     twinGuardianRanged: {
-        name: 'Co-Host (Ranged)',
+        name: '联合主持 (远程)',
         coreChar: '◈',
         armorChar: '[]',
         shieldChar: '{}',

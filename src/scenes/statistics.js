@@ -81,8 +81,8 @@ export function setupStatisticsScene(k) {
         const tabHeight = 30;
 
         const tabs = [
-            { key: 'achievements', label: 'Achievements' },
-            { key: 'history', label: 'History' }
+            { key: 'achievements', label: '成就' },
+            { key: 'history', label: '历史' }
         ];
 
         // Calculate centered positions for tabs (same as Settings menu)
@@ -215,7 +215,8 @@ export function setupStatisticsScene(k) {
                     displayCategories.forEach((cat, index) => {
                         const catX = firstCategoryX + index * categoryTabSpacing;
                         const isActive = achievementCategory === cat;
-                        const catName = cat === 'all' ? 'All' : cat.charAt(0).toUpperCase() + cat.slice(1);
+                        const catNameMap = { 'all': '全部', 'progression': '进阶', 'combat': '战斗', 'boss': 'Boss', 'run': '冒险', 'upgrade': '升级', 'currency': '金币', 'challenge': '挑战', 'benchmark': '里程碑' };
+                        const catName = catNameMap[cat] || cat.charAt(0).toUpperCase() + cat.slice(1);
 
                         const catBg = k.add([
                             k.rect(categoryTabWidth, categoryTabHeight),
@@ -430,7 +431,8 @@ export function setupStatisticsScene(k) {
                         contentItems.push(nameText);
 
                         // Difficulty badge
-                        const diffName = ach.difficulty.charAt(0).toUpperCase() + ach.difficulty.slice(1);
+                        const diffNameMap = { 'normal': '普通', 'hard': '困难', 'expert': '专家', 'legendary': '传奇' };
+                        const diffName = diffNameMap[ach.difficulty] || ach.difficulty.charAt(0).toUpperCase() + ach.difficulty.slice(1);
                         const diffBadge = k.add([
                             k.text(diffName, { size: 11 }),
                             k.pos(detailCenterX, detailTop + 105),
@@ -456,7 +458,7 @@ export function setupStatisticsScene(k) {
                         let statusY = detailTop + 160;
                         if (isUnlocked) {
                             const statusText = k.add([
-                                k.text('UNLOCKED', { size: 14 }),
+                                k.text('已解锁', { size: 14 }),
                                 k.pos(detailCenterX, statusY),
                                 k.anchor('center'),
                                 k.color(100, 255, 100),
@@ -508,7 +510,7 @@ export function setupStatisticsScene(k) {
                         if (!isUnlocked && ach.hint) {
                             const hintY = statusY + 15;
                             const hintLabel = k.add([
-                                k.text('Hint:', { size: 10 }),
+                                k.text('提示:', { size: 10 }),
                                 k.pos(detailCenterX, hintY),
                                 k.anchor('center'),
                                 k.color(120, 120, 140),
@@ -541,7 +543,7 @@ export function setupStatisticsScene(k) {
                         contentItems.push(promptIcon);
 
                         const promptText = k.add([
-                            k.text('Select an achievement', { size: 14 }),
+                            k.text('选择一个成就', { size: 14 }),
                             k.pos(detailCenterX, detailTop + 100),
                             k.anchor('center'),
                             k.color(120, 120, 150),
@@ -551,7 +553,7 @@ export function setupStatisticsScene(k) {
                         contentItems.push(promptText);
 
                         const promptText2 = k.add([
-                            k.text('to view details', { size: 12 }),
+                            k.text('查看详情', { size: 12 }),
                             k.pos(detailCenterX, detailTop + 120),
                             k.anchor('center'),
                             k.color(100, 100, 130),
@@ -768,7 +770,7 @@ export function setupStatisticsScene(k) {
 
                     // Progress count and percentage
                     const percentText = Math.round(progressPercent * 100);
-                    const statusText = isComplete ? 'COMPLETE!' : `${percentText}%`;
+                    const statusText = isComplete ? '全部完成！' : `${percentText}%`;
                     const progressLabel = k.add([
                         k.text(`${unlockedCount}/${totalAchievements}`, { size: 14 }),
                         k.pos(meterX + 180, meterY - 8),
@@ -803,7 +805,7 @@ export function setupStatisticsScene(k) {
                     console.error('Error rendering achievements:', e);
                     // Fallback: show error message
                     const errorText = k.add([
-                        k.text('Error loading achievements', { size: 18 }),
+                        k.text('成就加载失败', { size: 18 }),
                         k.pos(k.width() / 2, contentY + 50),
                         k.anchor('center'),
                         k.color(255, 100, 100),
@@ -821,7 +823,7 @@ export function setupStatisticsScene(k) {
                 if (runHistory.length === 0) {
                     // No history yet
                     const noHistoryText = k.add([
-                        k.text('No run history yet. Complete a run to see it here!', { size: 16 }),
+                        k.text('暂无历史记录。完成一局游戏即可查看！', { size: 16 }),
                         k.pos(k.width() / 2, historyY + 50),
                         k.anchor('center'),
                         k.color(150, 150, 150),
@@ -838,7 +840,7 @@ export function setupStatisticsScene(k) {
                     const displayRuns = runHistory.slice(startIndex, endIndex);
 
                     // Header row
-                    const headers = ['#', 'Floor', 'Rooms', 'Kills', 'Level', 'Credits', 'Time'];
+                    const headers = ['#', '层数', '房间', '击杀', '等级', '银币', '时间'];
                     const headerPositions = [60, 120, 200, 280, 360, 450, 550];
 
                     headers.forEach((header, i) => {
@@ -1009,7 +1011,7 @@ export function setupStatisticsScene(k) {
                     const showingStart = startIndex + 1;
                     const showingEnd = endIndex;
                     const totalText = k.add([
-                        k.text(`Showing ${showingStart}-${showingEnd} of ${runHistory.length} runs`, { size: 12 }),
+                        k.text(`显示 ${showingStart}-${showingEnd} / 共 ${runHistory.length} 局`, { size: 12 }),
                         k.pos(k.width() / 2, viewportBottom - 20),
                         k.anchor('center'),
                         k.color(100, 100, 150),
@@ -1038,7 +1040,7 @@ export function setupStatisticsScene(k) {
         ]);
 
         const backText = k.add([
-            k.text('BACK', { size: UI_TEXT_SIZES.SMALL }),
+            k.text('返回', { size: UI_TEXT_SIZES.SMALL }),
             k.pos(k.width() / 2, k.height() - 40),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_SECONDARY),

@@ -50,7 +50,7 @@ function showNameEditDialog(k, currentName, onSave) {
 
     // Title
     const titleText = k.add([
-        k.text('Edit Player Name', { size: UI_TEXT_SIZES.LABEL }),
+        k.text('编辑玩家名称', { size: UI_TEXT_SIZES.LABEL }),
         k.pos(k.width() / 2, k.height() / 2 - 60),
         k.anchor('center'),
         k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -82,7 +82,7 @@ function showNameEditDialog(k, currentName, onSave) {
 
     // Error/Info message
     const infoMsg = k.add([
-        k.text('(Max 20 characters)', { size: UI_TEXT_SIZES.SMALL - 2 }),
+        k.text('(最多20个字符)', { size: UI_TEXT_SIZES.SMALL - 2 }),
         k.pos(k.width() / 2, k.height() / 2 + 25),
         k.anchor('center'),
         k.color(...UI_COLORS.TEXT_SECONDARY),
@@ -115,7 +115,7 @@ function showNameEditDialog(k, currentName, onSave) {
     ]);
 
     const cancelText = k.add([
-        k.text('Cancel', { size: UI_TEXT_SIZES.SMALL - 2 }),
+        k.text('取消', { size: UI_TEXT_SIZES.SMALL - 2 }),
         k.pos(k.width() / 2 - 60, k.height() / 2 + 60),
         k.anchor('center'),
         k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -142,7 +142,7 @@ function showNameEditDialog(k, currentName, onSave) {
     ]);
 
     const saveText = k.add([
-        k.text('Save', { size: UI_TEXT_SIZES.SMALL - 2 }),
+        k.text('保存', { size: UI_TEXT_SIZES.SMALL - 2 }),
         k.pos(k.width() / 2 + 60, k.height() / 2 + 60),
         k.anchor('center'),
         k.color(...UI_COLORS.GOLD),
@@ -156,7 +156,7 @@ function showNameEditDialog(k, currentName, onSave) {
             onSave(inputText.trim());
             closeDialog();
         } else {
-            infoMsg.text = 'Name cannot be empty!';
+            infoMsg.text = '名称不能为空！';
             infoMsg.color = k.rgb(255, 100, 100);
         }
     });
@@ -167,7 +167,7 @@ function showNameEditDialog(k, currentName, onSave) {
         if (inputText.length < 20 && /[a-zA-Z0-9 ]/.test(ch)) {
             inputText += ch;
             inputDisplay.text = inputText;
-            infoMsg.text = '(Max 20 characters)';
+            infoMsg.text = '(最多20个字符)';
             infoMsg.color = k.rgb(...UI_COLORS.TEXT_SECONDARY);
         }
     });
@@ -234,7 +234,7 @@ export function setupProfileScene(k) {
         // Title - show player name when viewing another player
         if (isViewingOther) {
             k.add([
-                k.text(`${profileName}'s Profile`, { size: UI_TEXT_SIZES.H1 }),
+                k.text(`${profileName} 的资料`, { size: UI_TEXT_SIZES.H1 }),
                 k.pos(k.width() / 2, 35),
                 k.anchor('center'),
                 k.color(...UI_COLORS.GOLD),
@@ -401,7 +401,7 @@ export function setupProfileScene(k) {
         const stars = Math.min(5, Math.floor(profileLevel / 10));
         const starDisplay = '★'.repeat(stars) + '☆'.repeat(5 - stars);
         k.add([
-            k.text(`Level ${profileLevel}  ${starDisplay}`, { size: UI_TEXT_SIZES.LABEL }),
+            k.text(`等级 ${profileLevel}  ${starDisplay}`, { size: UI_TEXT_SIZES.LABEL }),
             k.pos(infoX, infoY),
             k.anchor('left'),
             k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -494,7 +494,7 @@ export function setupProfileScene(k) {
 
         function updateSelectedInfo(portrait) {
             if (selectedInfoText && selectedInfoText.exists()) {
-                selectedInfoText.text = `Selected: "${portrait.name}"`;
+                selectedInfoText.text = `已选择: "${portrait.name}"`;
             }
             if (selectedDescText && selectedDescText.exists()) {
                 selectedDescText.text = portrait.description;
@@ -569,7 +569,7 @@ export function setupProfileScene(k) {
                         // Show unlock requirement
                         const desc = getPortraitUnlockDescription(portrait.id);
                         if (selectedDescText && selectedDescText.exists()) {
-                            selectedDescText.text = `Locked: ${desc}`;
+                            selectedDescText.text = `未解锁: ${desc}`;
                             selectedDescText.color = k.rgb(...UI_COLORS.DANGER);
                         }
                     }
@@ -590,7 +590,7 @@ export function setupProfileScene(k) {
 
         // Selected portrait info
         selectedInfoText = k.add([
-            k.text(`Selected: "${currentPortrait.name}"`, { size: UI_TEXT_SIZES.SMALL }),
+            k.text(`已选择: "${currentPortrait.name}"`, { size: UI_TEXT_SIZES.SMALL }),
             k.pos(cardX, portraitsY + portraitsSectionHeight - 35),
             k.anchor('center'),
             k.color(...UI_COLORS.GOLD),
@@ -639,11 +639,11 @@ export function setupProfileScene(k) {
 
         // Row 1: Main stats (5 columns)
         const row1Stats = [
-            { label: 'Total Runs', value: totalRuns },
-            { label: 'Best Floor', value: stats.bestFloor || 1 },
-            { label: 'Best Level', value: stats.bestLevel || 1 },
-            { label: 'Best Room', value: stats.bestRoom || 1 },
-            { label: 'Fastest Run', value: fastestDisplay }
+            { label: '总局数', value: totalRuns },
+            { label: '最高层数', value: stats.bestFloor || 1 },
+            { label: '最高等级', value: stats.bestLevel || 1 },
+            { label: '最多房间', value: stats.bestRoom || 1 },
+            { label: '最快通关', value: fastestDisplay }
         ];
 
         const statWidth = cardWidth / row1Stats.length;
@@ -672,11 +672,11 @@ export function setupProfileScene(k) {
 
         // Row 2: Combat stats (5 columns)
         const row2Stats = [
-            { label: 'Enemies', value: (stats.totalEnemiesKilled || 0).toLocaleString() },
-            { label: 'Bosses', value: stats.totalBossesKilled || 0 },
-            { label: 'Rooms', value: (stats.totalRoomsCleared || 0).toLocaleString() },
-            { label: 'Avg Floor', value: avgFloors },
-            { label: 'Avg Rooms', value: avgRooms }
+            { label: '击杀敌人', value: (stats.totalEnemiesKilled || 0).toLocaleString() },
+            { label: '击杀Boss', value: stats.totalBossesKilled || 0 },
+            { label: '清理房间', value: (stats.totalRoomsCleared || 0).toLocaleString() },
+            { label: '平均层数', value: avgFloors },
+            { label: '平均房间', value: avgRooms }
         ];
 
         row2Stats.forEach((stat, index) => {
@@ -704,11 +704,11 @@ export function setupProfileScene(k) {
 
         // Row 3: Currency stats (5 columns)
         const row3Stats = [
-            { label: 'Total Money', value: (stats.totalCurrencyEarned || 0).toLocaleString() },
-            { label: 'Spent', value: (stats.totalCurrencySpent || 0).toLocaleString() },
-            { label: 'Avg Money', value: avgCurrency.toLocaleString() },
-            { label: 'Floors', value: (stats.totalFloorsReached || 0).toLocaleString() },
-            { label: 'Play Time', value: (() => {
+            { label: '总银币', value: (stats.totalCurrencyEarned || 0).toLocaleString() },
+            { label: '已花费', value: (stats.totalCurrencySpent || 0).toLocaleString() },
+            { label: '平均银币', value: avgCurrency.toLocaleString() },
+            { label: '到达层数', value: (stats.totalFloorsReached || 0).toLocaleString() },
+            { label: '游戏时间', value: (() => {
                 const playTime = stats.totalPlayTime || 0;
                 const hours = Math.floor(playTime / 3600);
                 const minutes = Math.floor((playTime % 3600) / 60);
@@ -756,7 +756,7 @@ export function setupProfileScene(k) {
         ]);
 
         k.add([
-            k.text('BACK', { size: UI_TEXT_SIZES.SMALL }),
+            k.text('返回', { size: UI_TEXT_SIZES.SMALL }),
             k.pos(k.width() / 2, k.height() - 40),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_SECONDARY),

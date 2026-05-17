@@ -7,7 +7,7 @@
 
 export const MINIBOSS_TYPES = {
     brute: {
-        name: 'Security Chief',
+        name: '安保队长',
         coreChar: 'B',
         armorChar: '[]',
         shieldChar: '{}',
@@ -26,7 +26,7 @@ export const MINIBOSS_TYPES = {
         behavior: 'charge' // Charges at player periodically
     },
     sentinel: {
-        name: 'Technical Director',
+        name: '技术总监',
         coreChar: 'S',
         armorChar: '[]',
         shieldChar: '{}',
@@ -47,7 +47,7 @@ export const MINIBOSS_TYPES = {
         behavior: 'shoot' // Ranged attacker
     },
     berserker: {
-        name: 'Stunt Coordinator',
+        name: '特技协调员',
         coreChar: 'Z',
         armorChar: '[]',
         shieldChar: '{}',
@@ -66,7 +66,7 @@ export const MINIBOSS_TYPES = {
         behavior: 'rush' // Fast, aggressive
     },
     guardian: {
-        name: 'Studio Manager',
+        name: '演播厅经理',
         coreChar: 'G',
         armorChar: '[]',
         shieldChar: '{}',
@@ -85,7 +85,7 @@ export const MINIBOSS_TYPES = {
         behavior: 'rush' // Tanky, slow
     },
     warlock: {
-        name: 'Creative Director',
+        name: '创意总监',
         coreChar: 'W',
         armorChar: '[]',
         shieldChar: '{}',

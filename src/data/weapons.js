@@ -2,7 +2,7 @@
 
 export const WEAPON_DEFINITIONS = {
     pistol: {
-        name: 'Basic Pistol',
+        name: '基础手枪',
         icon: '⌐', // Gun icon
         char: '•', // Bullet point
         color: [255, 255, 255],
@@ -20,7 +20,7 @@ export const WEAPON_DEFINITIONS = {
         upgradeCategories: ['damage', 'fireRate', 'multiShot', 'piercing', 'crit'] // Available upgrade types
     },
     smg: {
-        name: 'Rapid Fire SMG',
+        name: '速射冲锋枪',
         icon: '▓', // Rapid fire icon
         char: '│', // Box drawing vertical
         color: [100, 200, 255],
@@ -38,7 +38,7 @@ export const WEAPON_DEFINITIONS = {
         upgradeCategories: ['damage', 'fireRate', 'multiShot', 'piercing', 'crit'] // Removed 'speed' (passive upgrade)
     },
     shotgun: {
-        name: 'Spread Shotgun',
+        name: '扩散霰弹枪',
         icon: '╬', // Spread pattern icon
         char: '◦', // White bullet
         color: [255, 200, 100],
@@ -56,7 +56,7 @@ export const WEAPON_DEFINITIONS = {
         upgradeCategories: ['damage', 'pelletCount', 'spread', 'fireRate', 'crit']
     },
     sniper: {
-        name: 'Sniper Rifle',
+        name: '狙击步枪',
         icon: '━', // Long barrel icon
         char: '→', // Arrow
         color: [100, 255, 255],
@@ -74,7 +74,7 @@ export const WEAPON_DEFINITIONS = {
         upgradeCategories: ['damage', 'piercing', 'crit', 'fireRate', 'range']
     },
     flamethrower: {
-        name: 'Flame Thrower',
+        name: '火焰喷射器',
         icon: '≋', // Flame wave icon
         char: '═', // Double line
         color: [255, 150, 50],
@@ -92,7 +92,7 @@ export const WEAPON_DEFINITIONS = {
         upgradeCategories: ['damage', 'fireRate', 'range', 'spread', 'dot'] // DoT upgrades
     },
     orbital: {
-        name: 'Orbital Weapons',
+        name: '轨道武器',
         icon: '◎', // Orbital icon
         char: '○', // White circle
         color: [100, 200, 255],
@@ -112,7 +112,7 @@ export const WEAPON_DEFINITIONS = {
         upgradeCategories: ['orbitalCount', 'orbitalSpeed', 'orbitalRadius', 'damage'] // Orbital-specific upgrades
     },
     explosive: {
-        name: 'Explosive Launcher',
+        name: '爆破发射器',
         icon: '◉', // Explosion icon
         char: '●', // Black circle
         color: [255, 100, 50],
@@ -132,7 +132,7 @@ export const WEAPON_DEFINITIONS = {
         upgradeCategories: ['damage', 'explosionRadius', 'explosionDamage', 'fireRate', 'range']
     },
     chainLightning: {
-        name: 'Chain Lightning',
+        name: '连锁闪电',
         icon: '⚡', // Lightning icon
         char: '⚡', // Lightning bolt
         color: [255, 255, 100],
@@ -153,7 +153,7 @@ export const WEAPON_DEFINITIONS = {
         upgradeCategories: ['damage', 'chainJumps', 'chainRange', 'fireRate', 'chainDamage']
     },
     boomerang: {
-        name: 'Boomerang Blaster',
+        name: '回旋冲击波',
         icon: '⟲', // Circular arrow
         char: '⟳', // Clockwise arrow
         color: [100, 255, 200],
@@ -173,7 +173,7 @@ export const WEAPON_DEFINITIONS = {
         upgradeCategories: ['damage', 'fireRate', 'range', 'crit', 'projectileSpeed']
     },
     railgun: {
-        name: 'Railgun',
+        name: '电磁轨道炮',
         icon: '═', // Double horizontal line
         char: '═', // Rail
         color: [150, 200, 255],
@@ -192,7 +192,7 @@ export const WEAPON_DEFINITIONS = {
         upgradeCategories: ['damage', 'crit', 'critDamage', 'fireRate', 'obstaclePiercing']
     },
     spreadShot: {
-        name: 'Spread Shot',
+        name: '散射弹',
         icon: '⋔', // Trident-like spread
         char: '◦', // Small bullet
         color: [255, 180, 100],
@@ -210,7 +210,7 @@ export const WEAPON_DEFINITIONS = {
         upgradeCategories: ['damage', 'pelletCount', 'spread', 'fireRate', 'crit']
     },
     homingMissiles: {
-        name: 'Homing Missiles',
+        name: '追踪导弹',
         icon: '⊳', // Triangle pointing right
         char: '▸', // Small triangle
         color: [255, 100, 150],
@@ -230,7 +230,7 @@ export const WEAPON_DEFINITIONS = {
         upgradeCategories: ['damage', 'fireRate', 'range', 'crit', 'projectileSpeed']
     },
     plasmaRifle: {
-        name: 'Plasma Rifle',
+        name: '等离子步枪',
         icon: '⊕', // Circled plus
         char: '◈', // Diamond
         color: [100, 255, 200],

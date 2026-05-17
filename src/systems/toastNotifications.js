@@ -47,7 +47,7 @@ export function showToast(options) {
     }
 
     const toast = {
-        title: options.title || 'Notification',
+        title: options.title || '通知',
         message: options.message || '',
         icon: options.icon || '!',
         iconColor: options.iconColor || UI_COLORS.TEXT_PRIMARY,
@@ -67,11 +67,11 @@ export function showAchievementToast(achievement) {
     const difficultyColor = ACHIEVEMENT_COLORS[achievement.difficulty] || ACHIEVEMENT_COLORS.normal;
 
     // Determine title based on difficulty
-    let title = '🎉 Achievement Unlocked!';
+    let title = '🎉 成就解锁！';
     if (achievement.difficulty === 'challenge') {
-        title = '⭐ Challenge Complete!';
+        title = '⭐ 挑战完成！';
     } else if (achievement.difficulty === 'benchmark') {
-        title = '🏆 Milestone Reached!';
+        title = '🏆 里程碑达成！';
     }
 
     showToast({
@@ -94,7 +94,7 @@ export function showMultiplayerAchievementToast(playerName, achievement) {
     const difficultyColor = ACHIEVEMENT_COLORS[achievement.difficulty] || ACHIEVEMENT_COLORS.normal;
 
     showToast({
-        title: `${playerName} unlocked:`,
+        title: `${playerName} 解锁了：`,
         message: achievement.name,
         icon: achievement.icon,
         iconColor: difficultyColor,

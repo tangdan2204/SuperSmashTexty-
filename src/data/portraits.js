@@ -25,243 +25,243 @@ export const PORTRAITS = {
     // ============ DEFAULT ============
     default: {
         id: 'default',
-        name: 'Rookie',
+        name: '新手',
         icon: '😊',
         color: [200, 200, 200],
         category: PORTRAIT_CATEGORIES.LEVEL,
         unlockCondition: { type: 'default' },
-        description: 'Everyone starts somewhere.'
+        description: '每个人都有起点。'
     },
 
     // ============ LEVEL-BASED ============
     veteran: {
         id: 'veteran',
-        name: 'Veteran',
+        name: '老兵',
         icon: '😎',
         color: [100, 200, 255],
         category: PORTRAIT_CATEGORIES.LEVEL,
         unlockCondition: { type: 'level', value: 10 },
-        description: 'A seasoned competitor with many battles under their belt.'
+        description: '身经百战的竞技者。'
     },
     elite: {
         id: 'elite',
-        name: 'Elite',
+        name: '精英',
         icon: '🌟',
         color: [255, 200, 100],
         category: PORTRAIT_CATEGORIES.LEVEL,
         unlockCondition: { type: 'level', value: 25 },
-        description: 'Among the top performers in the arena.'
+        description: '竞技场的顶尖高手。'
     },
     legend: {
         id: 'legend',
-        name: 'Legend',
+        name: '传奇',
         icon: '👑',
         color: [255, 100, 255],
         category: PORTRAIT_CATEGORIES.LEVEL,
         unlockCondition: { type: 'level', value: 50 },
-        description: 'A living legend whose name echoes through the halls.'
+        description: '名声响彻殿堂的活传奇。'
     },
     champion: {
         id: 'champion',
-        name: 'Champion',
+        name: '冠军',
         icon: '🏆',
         color: [255, 215, 0],
         category: PORTRAIT_CATEGORIES.LEVEL,
         unlockCondition: { type: 'level', value: 75 },
-        description: 'A true champion who has conquered all challenges.'
+        description: '真正的冠军，征服了一切挑战。'
     },
     immortal: {
         id: 'immortal',
-        name: 'Immortal',
+        name: '不朽',
         icon: '🔱',
         color: [200, 255, 255],
         category: PORTRAIT_CATEGORIES.LEVEL,
         unlockCondition: { type: 'level', value: 100 },
-        description: 'Transcended mortality. A god among players.'
+        description: '超越凡人。玩家中的神。'
     },
 
     // ============ CHARACTER-BASED ============
     survivor: {
         id: 'survivor',
-        name: 'Survivor',
+        name: '幸存者',
         icon: '💪',
         color: [100, 200, 100],
         category: PORTRAIT_CATEGORIES.CHARACTER,
         unlockCondition: { type: 'character', value: 'survivor' },
-        description: 'The default hero. Never gives up.'
+        description: '默认英雄。永不放弃。'
     },
     berserker: {
         id: 'berserker',
-        name: 'Berserker',
+        name: '狂战士',
         icon: '😡',
         color: [255, 100, 100],
         category: PORTRAIT_CATEGORIES.CHARACTER,
         unlockCondition: { type: 'character', value: 'berserker' },
-        description: 'Rage incarnate. Pain is just fuel.'
+        description: '化身愤怒。痛苦只是燃料。'
     },
     ranger: {
         id: 'ranger',
-        name: 'Ranger',
+        name: '游侠',
         icon: '🎯',
         color: [100, 255, 150],
         category: PORTRAIT_CATEGORIES.CHARACTER,
         unlockCondition: { type: 'character', value: 'ranger' },
-        description: 'Swift and precise. Death from a distance.'
+        description: '迅捷精准。远程致命。'
     },
     mage: {
         id: 'mage',
-        name: 'Mage',
+        name: '法师',
         icon: '🧙',
         color: [200, 100, 255],
         category: PORTRAIT_CATEGORIES.CHARACTER,
         unlockCondition: { type: 'character', value: 'mage' },
-        description: 'Master of the arcane arts.'
+        description: '奥术大师。'
     },
     tank: {
         id: 'tank',
-        name: 'Tank',
+        name: '坦克',
         icon: '🛡️',
         color: [150, 150, 200],
         category: PORTRAIT_CATEGORIES.CHARACTER,
         unlockCondition: { type: 'character', value: 'tank' },
-        description: 'An immovable wall. Nothing gets through.'
+        description: '不动如山。无物可破。'
     },
     assassin: {
         id: 'assassin',
-        name: 'Assassin',
+        name: '刺客',
         icon: '🗡️',
         color: [150, 100, 150],
         category: PORTRAIT_CATEGORIES.CHARACTER,
         unlockCondition: { type: 'character', value: 'assassin' },
-        description: 'Silent. Deadly. Gone before you know it.'
+        description: '无声致命。杀人于无形。'
     },
 
     // ============ ACHIEVEMENT-BASED ============
     boss_slayer: {
         id: 'boss_slayer',
-        name: 'Boss Slayer',
+        name: '弑Boss者',
         icon: '👹',
         color: [255, 180, 50],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'stat', stat: 'totalBossesKilled', value: 100 },
-        description: 'Has ended the reign of 100 bosses.'
+        description: '终结了100个Boss的统治。'
     },
     speedrunner: {
         id: 'speedrunner',
-        name: 'Speedrunner',
+        name: '速通达人',
         icon: '⚡',
         color: [255, 255, 100],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'stat', stat: 'fastestRunTime', value: 600, comparison: 'lessThan' },
-        description: 'Completed a run in under 10 minutes.'
+        description: '10分钟内完成一局。'
     },
     perfectionist: {
         id: 'perfectionist',
-        name: 'Perfectionist',
+        name: '完美主义者',
         icon: '✨',
         color: [255, 255, 255],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'achievement', value: 'flawless_run' },
-        description: 'Completed a run without taking damage.'
+        description: '零伤害通关一整局。'
     },
     grinder: {
         id: 'grinder',
-        name: 'Grinder',
+        name: '肝帝',
         icon: '⚙️',
         color: [200, 150, 100],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'stat', stat: 'totalRuns', value: 100 },
-        description: 'Has completed 100 runs. Dedication personified.'
+        description: '完成100局游戏。毅力的化身。'
     },
     collector: {
         id: 'collector',
-        name: 'Collector',
+        name: '收藏家',
         icon: '💰',
         color: [255, 215, 0],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'stat', stat: 'totalCurrencyEarned', value: 10000 },
-        description: 'Has earned 10,000 credits total.'
+        description: '累计获得10000银币。'
     },
     exterminator: {
         id: 'exterminator',
-        name: 'Exterminator',
+        name: '灭杀者',
         icon: '💀',
         color: [200, 50, 50],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'stat', stat: 'totalEnemiesKilled', value: 10000 },
-        description: 'Has eliminated 10,000 enemies.'
+        description: '消灭了10000个敌人。'
     },
     explorer: {
         id: 'explorer',
-        name: 'Explorer',
+        name: '探索者',
         icon: '🧭',
         color: [100, 180, 100],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'stat', stat: 'bestFloor', value: 5 },
-        description: 'Reached floor 5. The journey begins.'
+        description: '到达第5层。旅程才刚开始。'
     },
     delver: {
         id: 'delver',
-        name: 'Delver',
+        name: '深渊挖掘者',
         icon: '⛏️',
         color: [180, 140, 100],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'stat', stat: 'bestFloor', value: 10 },
-        description: 'Reached floor 10. Deep into the unknown.'
+        description: '到达第10层。深入未知。'
     },
     abyssal: {
         id: 'abyssal',
-        name: 'Abyssal',
+        name: '深渊之子',
         icon: '🌀',
         color: [80, 50, 150],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'stat', stat: 'bestFloor', value: 20 },
-        description: 'Reached floor 20. Touched the abyss.'
+        description: '到达第20层。触碰了深渊。'
     },
     slayer: {
         id: 'slayer',
-        name: 'Slayer',
+        name: '屠夫',
         icon: '⚔️',
         color: [200, 80, 80],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'stat', stat: 'totalBossesKilled', value: 25 },
-        description: 'Has slain 25 bosses.'
+        description: '击杀了25个Boss。'
     },
     warrior: {
         id: 'warrior',
-        name: 'Warrior',
+        name: '战士',
         icon: '🗡️',
         color: [150, 150, 200],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'stat', stat: 'totalEnemiesKilled', value: 1000 },
-        description: 'Has defeated 1,000 enemies.'
+        description: '击败了1000个敌人。'
     },
     rich: {
         id: 'rich',
-        name: 'Wealthy',
+        name: '富豪',
         icon: '💎',
         color: [100, 200, 255],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'stat', stat: 'totalCurrencyEarned', value: 50000 },
-        description: 'Has earned 50,000 credits. Living large.'
+        description: '累计获得50000银币。奢华人生。'
     },
     dedicated: {
         id: 'dedicated',
-        name: 'Dedicated',
+        name: '坚守者',
         icon: '🎮',
         color: [150, 100, 200],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'stat', stat: 'totalRuns', value: 50 },
-        description: 'Has completed 50 runs. Committed to the grind.'
+        description: '完成50局游戏。致力于磨练。'
     },
     marathoner: {
         id: 'marathoner',
-        name: 'Marathoner',
+        name: '马拉松选手',
         icon: '🏃',
         color: [100, 200, 150],
         category: PORTRAIT_CATEGORIES.ACHIEVEMENT,
         unlockCondition: { type: 'stat', stat: 'totalRoomsCleared', value: 500 },
-        description: 'Has cleared 500 rooms. Endurance personified.'
+        description: '清理了500个房间。耐力的化身。'
     }
 };
 
@@ -399,33 +399,33 @@ export function getPortraitUnlockProgress(portraitId, saveData) {
  */
 export function getPortraitUnlockDescription(portraitId) {
     const portrait = PORTRAITS[portraitId];
-    if (!portrait) return 'Unknown';
+    if (!portrait) return '未知';
 
     const condition = portrait.unlockCondition;
 
     switch (condition.type) {
         case 'default':
-            return 'Unlocked by default';
+            return '默认解锁';
         case 'level':
-            return `Reach Level ${condition.value}`;
+            return `达到等级 ${condition.value}`;
         case 'character':
-            return `Unlock the ${condition.value.charAt(0).toUpperCase() + condition.value.slice(1)} character`;
+            return `解锁 ${condition.value.charAt(0).toUpperCase() + condition.value.slice(1)} 角色`;
         case 'achievement':
-            return `Complete the "${condition.value}" achievement`;
+            return `完成「${condition.value}」成就`;
         case 'stat':
             const statNames = {
-                totalBossesKilled: 'bosses killed',
-                totalRuns: 'runs completed',
-                totalCurrencyEarned: 'credits earned',
-                totalEnemiesKilled: 'enemies killed',
-                fastestRunTime: 'second run'
+                totalBossesKilled: '击杀Boss数',
+                totalRuns: '完成局数',
+                totalCurrencyEarned: '获得银币数',
+                totalEnemiesKilled: '击杀敌人数',
+                fastestRunTime: '秒通关'
             };
             const statName = statNames[condition.stat] || condition.stat;
             if (condition.comparison === 'lessThan') {
-                return `Complete a run in under ${Math.floor(condition.value / 60)} minutes`;
+                return `${Math.floor(condition.value / 60)}分钟内完成一局`;
             }
             return `${condition.value.toLocaleString()} ${statName}`;
         default:
-            return 'Unknown condition';
+            return '未知条件';
     }
 }

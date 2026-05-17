@@ -69,7 +69,7 @@ export function setupProgressionSystem(k, player, reviveAllPlayersCallback = nul
 
         // Show level up notification
         const notification = k.add([
-            k.text(`Level ${level}!`, { size: 24 }),
+            k.text(`等级 ${level}！`, { size: 24 }),
             k.pos(k.width() / 2, PROGRESSION_CONFIG.LEVEL_UP_NOTIFICATION_Y),
             k.anchor('center'),
             k.color(255, 255, 100),

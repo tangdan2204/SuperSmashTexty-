@@ -60,11 +60,11 @@ export function setupShopScene(k) {
         const tabHeight = 30;
 
         const categories = [
-            { key: 'permanentUpgrades', label: 'Upgrades' },
-            { key: 'boosters', label: 'Boosters' },
-            { key: 'cosmetics', label: 'Cosmetics' },
-            { key: 'weapons', label: 'Weapons' },
-            { key: 'characters', label: 'Chars' }
+            { key: 'permanentUpgrades', label: '永久强化' },
+            { key: 'boosters', label: '增益道具' },
+            { key: 'cosmetics', label: '外观' },
+            { key: 'weapons', label: '武器' },
+            { key: 'characters', label: '角色' }
         ];
         
         // Calculate centered positions for tabs (same as Statistics and Settings menus)
@@ -177,7 +177,7 @@ export function setupShopScene(k) {
             if (displayUnlocks.length === 0) {
                 // No unlocks available in this category
                 const noItemsText = k.add([
-                    k.text('No items available in this category yet.', { size: 18 }),
+                    k.text('该分类暂无可用物品。', { size: 18 }),
                     k.pos(k.width() / 2, contentY + 50),
                     k.anchor('center'),
                     k.color(150, 150, 150),
@@ -464,22 +464,22 @@ export function setupShopScene(k) {
                     showProgressBar = true;
 
                     if (level >= maxLevel) {
-                        statusText = 'MAXED';
+                        statusText = '满级';
                     } else {
                         purchaseCost = getUpgradePrice(level);
                         canPurchase = currency >= purchaseCost;
                     }
                 } else if (currentCategory === 'boosters') {
                     const boosterCount = getActiveBoostersCount(key);
-                    statusText = boosterCount > 0 ? `Ready (${boosterCount})` : 'Consumable';
+                    statusText = boosterCount > 0 ? `可用 (${boosterCount})` : '消耗品';
                     canPurchase = currency >= purchaseCost;
                 } else if (currentCategory === 'cosmetics') {
                     const cosmeticType = unlock.category;
                     if (isEquippedCosmetic) {
-                        statusText = 'EQUIPPED';
+                        statusText = '已装备';
                     } else if (isOwnedCosmetic) {
                         // Differentiate between achievement-unlocked and purchased
-                        statusText = isCosmeticAchievementUnlocked ? 'UNLOCKED' : 'OWNED';
+                        statusText = isCosmeticAchievementUnlocked ? '已解锁' : '已拥有';
                     } else if (!isAchievementLocked) {
                         // Only show purchase option if not achievement-locked
                         canPurchase = currency >= purchaseCost;
@@ -546,14 +546,14 @@ export function setupShopScene(k) {
                     // Color based on status type
                     let statusColor;
                     switch (statusText) {
-                        case 'EQUIPPED':
+                        case '已装备':
                             statusColor = [100, 200, 255]; // Cyan for equipped
                             break;
-                        case 'UNLOCKED':
+                        case '已解锁':
                             statusColor = [180, 140, 255]; // Purple for achievement-unlocked
                             break;
-                        case 'MAXED':
-                        case 'OWNED':
+                        case '满级':
+                        case '已拥有':
                             statusColor = [100, 200, 100]; // Green for owned/maxed
                             break;
                         default:
@@ -584,7 +584,7 @@ export function setupShopScene(k) {
                     ]);
 
                     const viewButtonText = k.add([
-                        k.text('VIEW', { size: 11 }),
+                        k.text('查看', { size: 11 }),
                         k.pos(buttonX + buttonWidth / 2, bottomY + buttonHeight / 2),
                         k.anchor('center'),
                         k.color(160, 130, 200),
@@ -616,7 +616,7 @@ export function setupShopScene(k) {
                 } else if (isAchievementLocked) {
                     // Achievement locked but no specific achievement found - show locked status
                     const lockedText = k.add([
-                        k.text('LOCKED', { size: 11 }),
+                        k.text('锁定', { size: 11 }),
                         k.pos(buttonX + buttonWidth / 2, bottomY + buttonHeight / 2),
                         k.anchor('center'),
                         k.color(100, 80, 80),
@@ -668,7 +668,7 @@ export function setupShopScene(k) {
                                         
                                         // Refund successful
                                         const refundMsg = k.add([
-                                            k.text(`Refunded $${result.refundAmount}!`, { size: 20 }),
+                                            k.text(`已退款 $${result.refundAmount}!`, { size: 20 }),
                                             k.pos(k.width() / 2, k.height() / 2),
                                             k.anchor('center'),
                                             k.color(100, 200, 255),
@@ -723,7 +723,7 @@ export function setupShopScene(k) {
                                     playPurchaseSuccess();
 
                                     // Purchase successful - different message for boosters
-                                    const msgText = currentCategory === 'boosters' ? 'Booster Ready!' : 'Purchased!';
+                                    const msgText = currentCategory === 'boosters' ? '增益已就绪！' : '购买成功！';
                                     const successMsg = k.add([
                                         k.text(msgText, { size: 20 }),
                                         k.pos(k.width() / 2, k.height() / 2),
@@ -748,7 +748,7 @@ export function setupShopScene(k) {
 
                                     // Not enough currency
                                     const errorMsg = k.add([
-                                        k.text(`Not enough ${currencyName}!`, { size: 20 }),
+                                        k.text(`${currencyName}不足！`, { size: 20 }),
                                         k.pos(k.width() / 2, k.height() / 2),
                                         k.anchor('center'),
                                         k.color(255, 100, 100),
@@ -774,7 +774,7 @@ export function setupShopScene(k) {
 
                                     // Purchase successful
                                     const successMsg = k.add([
-                                        k.text('Purchased!', { size: 20 }),
+                                        k.text('购买成功！', { size: 20 }),
                                         k.pos(k.width() / 2, k.height() / 2),
                                         k.anchor('center'),
                                         k.color(100, 255, 100),
@@ -797,7 +797,7 @@ export function setupShopScene(k) {
 
                                     // Not enough currency
                                     const errorMsg = k.add([
-                                        k.text(`Not enough ${currencyName}!`, { size: 20 }),
+                                        k.text(`${currencyName}不足！`, { size: 20 }),
                                         k.pos(k.width() / 2, k.height() / 2),
                                         k.anchor('center'),
                                         k.color(255, 100, 100),
@@ -831,7 +831,7 @@ export function setupShopScene(k) {
                     ]);
 
                     const equipButtonText = k.add([
-                        k.text('EQUIP', { size: 11 }),
+                        k.text('装备', { size: 11 }),
                         k.pos(buttonX + buttonWidth / 2, bottomY + buttonHeight / 2),
                         k.anchor('center'),
                         k.color(200, 230, 255),
@@ -876,7 +876,7 @@ export function setupShopScene(k) {
                     ]);
 
                     const unequipButtonText = k.add([
-                        k.text('UNEQUIP', { size: 11 }),
+                        k.text('卸下', { size: 11 }),
                         k.pos(buttonX + buttonWidth / 2, bottomY + buttonHeight / 2),
                         k.anchor('center'),
                         k.color(255, 180, 180),
@@ -1067,7 +1067,7 @@ export function setupShopScene(k) {
                     ]);
                     
                     refundText = k.add([
-                        k.text(`REFUND: $${refundableAmount}`, { size: 14 }),
+                        k.text(`全部退款: $${refundableAmount}`, { size: 14 }),
                         k.pos(k.width() / 2, k.height() - 80),
                         k.anchor('center'),
                         k.color(255, 200, 200),
@@ -1087,7 +1087,7 @@ export function setupShopScene(k) {
                     });
                 } else {
                     // Update refund amount in button text
-                    refundText.text = `REFUND: $${refundableAmount}`;
+                    refundText.text = `全部退款: $${refundableAmount}`;
                     refundButton.hidden = false;
                     refundText.hidden = false;
                 }
@@ -1115,7 +1115,7 @@ export function setupShopScene(k) {
         ]);
         
         const backText = k.add([
-            k.text(formatButtonText('Back'), { size: UI_TEXT_SIZES.BODY }),
+            k.text(formatButtonText('返回'), { size: UI_TEXT_SIZES.BODY }),
             k.pos(k.width() / 2, k.height() - 40),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_SECONDARY),

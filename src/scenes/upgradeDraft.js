@@ -99,8 +99,8 @@ export function showUpgradeDraft(k, player, onSelect, playerName = null, levelOv
 
     // Title - show player name in multiplayer
     const titleText = inMultiplayer && playerName
-        ? `${playerName} - Level Up! Choose an Upgrade`
-        : 'Level Up! Choose an Upgrade';
+        ? `${playerName} - 升级了！选择一个强化`
+        : '升级了！选择一个强化';
     const title = k.add([
         k.text(titleText, { size: UI_TEXT_SIZES.TITLE }),
         k.pos(k.width() / 2, 80),
@@ -256,7 +256,7 @@ export function showUpgradeDraft(k, player, onSelect, playerName = null, levelOv
 
         // Using parentheses instead of square brackets to avoid KAPLAY styled text tag parsing
         rerollText = k.add([
-            k.text(`(R) Reroll (${rerollsRemaining})`, { size: 14 }),
+            k.text(`(R) 重选 (${rerollsRemaining})`, { size: 14 }),
             k.pos(k.width() / 2, k.height() - 60),
             k.anchor('center'),
             k.color(...UI_COLORS.WARNING),
@@ -283,7 +283,7 @@ export function showUpgradeDraft(k, player, onSelect, playerName = null, levelOv
 
         // Update reroll button text
         if (rerollText && rerollText.exists()) {
-            rerollText.text = `(R) Reroll (${rerollsRemaining})`;
+            rerollText.text = `(R) 重选 (${rerollsRemaining})`;
             if (rerollsRemaining === 0) {
                 rerollText.color = k.rgb(...UI_COLORS.TEXT_SECONDARY);
             }

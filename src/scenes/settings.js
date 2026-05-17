@@ -63,7 +63,7 @@ function showResetConfirmationDialog(k, onConfirm) {
     ]);
 
     const cancelText = k.add([
-        k.text('Cancel', { size: UI_TEXT_SIZES.SMALL - 2 }),
+        k.text('取消', { size: UI_TEXT_SIZES.SMALL - 2 }),
         k.pos(k.width() / 2 - 60, k.height() / 2 + 50),
         k.anchor('center'),
         k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -89,7 +89,7 @@ function showResetConfirmationDialog(k, onConfirm) {
     ]);
 
     const confirmText = k.add([
-        k.text('Reset', { size: UI_TEXT_SIZES.SMALL - 2 }),
+        k.text('重置', { size: UI_TEXT_SIZES.SMALL - 2 }),
         k.pos(k.width() / 2 + 60, k.height() / 2 + 50),
         k.anchor('center'),
         k.color(255, 200, 200),
@@ -105,7 +105,7 @@ function showResetConfirmationDialog(k, onConfirm) {
 
     // Add title and message to cleanup list
     const titleText = k.add([
-        k.text('Reset to Defaults?', { size: UI_TEXT_SIZES.LABEL }),
+        k.text('恢复默认设置？', { size: UI_TEXT_SIZES.LABEL }),
         k.pos(k.width() / 2, k.height() / 2 - 50),
         k.anchor('center'),
         k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -115,7 +115,7 @@ function showResetConfirmationDialog(k, onConfirm) {
     dialogEntities.push(titleText);
 
     const messageText = k.add([
-        k.text('This will reset all settings to their default values.', { size: UI_TEXT_SIZES.SMALL }),
+        k.text('这将把所有设置恢复为默认值。', { size: UI_TEXT_SIZES.SMALL }),
         k.pos(k.width() / 2, k.height() / 2 - 10),
         k.anchor('center'),
         k.color(...UI_COLORS.TEXT_SECONDARY),
@@ -161,12 +161,12 @@ export function setupSettingsScene(k) {
         const tabHeight = 30;
         
         const tabs = [
-            { key: 'audio', label: 'Audio' },
-            { key: 'video', label: 'Video' },
-            { key: 'gameplay', label: 'Gameplay' },
-            { key: 'controls', label: 'Controls' },
-            { key: 'access', label: 'Access.' },
-            { key: 'data', label: 'Data' }
+            { key: 'audio', label: '音频' },
+            { key: 'video', label: '视频' },
+            { key: 'gameplay', label: '游戏性' },
+            { key: 'controls', label: '操作' },
+            { key: 'access', label: '辅助' },
+            { key: 'data', label: '数据' }
         ];
         
         // Calculate centered positions for tabs
@@ -245,19 +245,19 @@ export function setupSettingsScene(k) {
 
             if (currentTab === 'audio') {
                 // Master Volume
-                currentY = addVolumeSlider(k, 'Master Volume', settings.audio?.masterVolume ?? 1.0, currentY, (value) => {
+                currentY = addVolumeSlider(k, '主音量', settings.audio?.masterVolume ?? 1.0, currentY, (value) => {
                     updateSetting('audio', 'masterVolume', value);
                     setMasterVolume(value);
                 });
 
                 // Music Volume
-                currentY = addVolumeSlider(k, 'Music Volume', settings.audio?.musicVolume ?? 0.35, currentY, (value) => {
+                currentY = addVolumeSlider(k, '音乐音量', settings.audio?.musicVolume ?? 0.35, currentY, (value) => {
                     updateSetting('audio', 'musicVolume', value);
                     setMusicVolume(value);
                 });
 
                 // SFX Volume
-                currentY = addVolumeSlider(k, 'SFX Volume', settings.audio?.sfxVolume ?? 1.0, currentY, (value) => {
+                currentY = addVolumeSlider(k, '音效音量', settings.audio?.sfxVolume ?? 1.0, currentY, (value) => {
                     updateSetting('audio', 'sfxVolume', value);
                     setSfxVolume(value);
                     // Play a preview sound when adjusting
@@ -265,45 +265,45 @@ export function setupSettingsScene(k) {
                 });
 
                 // UI Sounds toggle
-                currentY = addToggle(k, 'UI Sounds', settings.audio?.uiSounds !== false, currentY, (value) => {
+                currentY = addToggle(k, '界面音效', settings.audio?.uiSounds !== false, currentY, (value) => {
                     updateSetting('audio', 'uiSounds', value);
                     setUiSoundsEnabled(value);
                 });
 
                 // Combat Sounds toggle
-                currentY = addToggle(k, 'Combat Sounds', settings.audio?.combatSounds !== false, currentY, (value) => {
+                currentY = addToggle(k, '战斗音效', settings.audio?.combatSounds !== false, currentY, (value) => {
                     updateSetting('audio', 'combatSounds', value);
                     setCombatSoundsEnabled(value);
                 });
 
             } else if (currentTab === 'video') {
                 // Show Particles
-                currentY = addToggle(k, 'Show Particles', settings.visual?.showParticles !== false, currentY, (value) => {
+                currentY = addToggle(k, '粒子效果', settings.visual?.showParticles !== false, currentY, (value) => {
                     updateSetting('visual', 'showParticles', value);
                 });
 
                 // Show Screen Shake
-                currentY = addToggle(k, 'Screen Shake', settings.visual?.showScreenShake !== false, currentY, (value) => {
+                currentY = addToggle(k, '屏幕震动', settings.visual?.showScreenShake !== false, currentY, (value) => {
                     updateSetting('visual', 'showScreenShake', value);
                 });
 
                 // Show Hit Freeze
-                currentY = addToggle(k, 'Hit Freeze', settings.visual?.showHitFreeze !== false, currentY, (value) => {
+                currentY = addToggle(k, '打击停顿', settings.visual?.showHitFreeze !== false, currentY, (value) => {
                     updateSetting('visual', 'showHitFreeze', value);
                 });
 
                 // Show Damage Numbers
-                currentY = addToggle(k, 'Damage Numbers', settings.visual?.showDamageNumbers !== false, currentY, (value) => {
+                currentY = addToggle(k, '伤害数字', settings.visual?.showDamageNumbers !== false, currentY, (value) => {
                     updateSetting('visual', 'showDamageNumbers', value);
                 });
 
                 // FPS Counter
-                currentY = addToggle(k, 'FPS Counter', settings.visual?.showFPS || false, currentY, (value) => {
+                currentY = addToggle(k, '帧率显示', settings.visual?.showFPS || false, currentY, (value) => {
                     updateSetting('visual', 'showFPS', value);
                 });
 
                 // Show Timer
-                currentY = addToggle(k, 'Show Timer', settings.visual?.showTimer !== false, currentY, (value) => {
+                currentY = addToggle(k, '显示计时', settings.visual?.showTimer !== false, currentY, (value) => {
                     updateSetting('visual', 'showTimer', value);
                 });
 
@@ -312,12 +312,12 @@ export function setupSettingsScene(k) {
                 const controls = settings.controls || {};
                 
                 const controlLabels = [
-                    { label: 'Move Up', key: 'moveUp', value: controls.moveUp || 'w' },
-                    { label: 'Move Down', key: 'moveDown', value: controls.moveDown || 's' },
-                    { label: 'Move Left', key: 'moveLeft', value: controls.moveLeft || 'a' },
-                    { label: 'Move Right', key: 'moveRight', value: controls.moveRight || 'd' },
-                    { label: 'Pause', key: 'pause', value: controls.pause || 'escape' },
-                    { label: 'Interact', key: 'interact', value: controls.interact || 'space' }
+                    { label: '上移', key: 'moveUp', value: controls.moveUp || 'w' },
+                    { label: '下移', key: 'moveDown', value: controls.moveDown || 's' },
+                    { label: '左移', key: 'moveLeft', value: controls.moveLeft || 'a' },
+                    { label: '右移', key: 'moveRight', value: controls.moveRight || 'd' },
+                    { label: '暂停', key: 'pause', value: controls.pause || 'escape' },
+                    { label: '互动', key: 'interact', value: controls.interact || 'space' }
                 ];
                 
                 controlLabels.forEach((control, index) => {
@@ -360,7 +360,7 @@ export function setupSettingsScene(k) {
                 const maxContentY = startY + controlLabels.length * itemSpacing;
                 if (maxContentY < k.height() - bottomButtonArea) {
                     const noteText = k.add([
-                        k.text('(Key remapping coming soon)', { size: 12 }),
+                        k.text('(按键自定义即将推出)', { size: 12 }),
                         k.pos(k.width() / 2, maxContentY + 20),
                         k.anchor('center'),
                         k.color(150, 150, 150),
@@ -372,27 +372,27 @@ export function setupSettingsScene(k) {
                 
             } else if (currentTab === 'gameplay') {
                 // Auto-pause on level up
-                currentY = addToggle(k, 'Auto-pause on Level Up', settings.gameplay?.autoPause || false, currentY, (value) => {
+                currentY = addToggle(k, '升级时自动暂停', settings.gameplay?.autoPause || false, currentY, (value) => {
                     updateSetting('gameplay', 'autoPause', value);
                 });
 
                 // Auto-pickup Currency
-                currentY = addToggle(k, 'Auto-pickup Currency', settings.gameplay?.autoPickupCurrency || false, currentY, (value) => {
+                currentY = addToggle(k, '自动拾取金币', settings.gameplay?.autoPickupCurrency || false, currentY, (value) => {
                     updateSetting('gameplay', 'autoPickupCurrency', value);
                 });
 
                 // Auto-pickup XP
-                currentY = addToggle(k, 'Auto-pickup XP', settings.gameplay?.autoPickupXP || false, currentY, (value) => {
+                currentY = addToggle(k, '自动拾取经验', settings.gameplay?.autoPickupXP || false, currentY, (value) => {
                     updateSetting('gameplay', 'autoPickupXP', value);
                 });
 
                 // Confirm Before Quit
-                currentY = addToggle(k, 'Confirm Before Quit', settings.gameplay?.confirmBeforeQuit !== false, currentY, (value) => {
+                currentY = addToggle(k, '退出前确认', settings.gameplay?.confirmBeforeQuit !== false, currentY, (value) => {
                     updateSetting('gameplay', 'confirmBeforeQuit', value);
                 });
 
                 // Skip Intro Animation
-                currentY = addToggle(k, 'Skip Intro Animation', settings.gameplay?.skipIntroAnimation || false, currentY, (value) => {
+                currentY = addToggle(k, '跳过开场动画', settings.gameplay?.skipIntroAnimation || false, currentY, (value) => {
                     updateSetting('gameplay', 'skipIntroAnimation', value);
                 });
 
@@ -400,13 +400,13 @@ export function setupSettingsScene(k) {
                 // Accessibility tab
 
                 // Reduced Motion - disables particles, screen shake, and hit freeze
-                currentY = addToggle(k, 'Reduced Motion', settings.accessibility?.reducedMotion || false, currentY, (value) => {
+                currentY = addToggle(k, '减少动效', settings.accessibility?.reducedMotion || false, currentY, (value) => {
                     updateSetting('accessibility', 'reducedMotion', value);
                 });
 
                 // Info text explaining reduced motion
                 const infoText = k.add([
-                    k.text('Disables particles, screen shake, and hit freeze effects', { size: 12 }),
+                    k.text('禁用粒子效果、屏幕震动和打击停顿效果', { size: 12 }),
                     k.pos(k.width() / 2, currentY + 10),
                     k.anchor('center'),
                     k.color(...UI_COLORS.TEXT_SECONDARY),
@@ -432,7 +432,7 @@ export function setupSettingsScene(k) {
                 ]);
 
                 const exportText = k.add([
-                    k.text('Export Save Data', { size: UI_TEXT_SIZES.SMALL }),
+                    k.text('导出存档', { size: UI_TEXT_SIZES.SMALL }),
                     k.pos(k.width() / 2, currentY),
                     k.anchor('center'),
                     k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -449,12 +449,12 @@ export function setupSettingsScene(k) {
                         if (navigator.clipboard && navigator.clipboard.writeText) {
                             navigator.clipboard.writeText(saveData).then(() => {
                                 if (exportStatusText && exportStatusText.exists()) {
-                                    exportStatusText.text = 'Copied to clipboard!';
+                                    exportStatusText.text = '已复制到剪贴板！';
                                     exportStatusText.color = k.rgb(...UI_COLORS.SUCCESS);
                                 }
                             }).catch(() => {
                                 if (exportStatusText && exportStatusText.exists()) {
-                                    exportStatusText.text = 'Failed to copy';
+                                    exportStatusText.text = '复制失败';
                                     exportStatusText.color = k.rgb(...UI_COLORS.DANGER);
                                 }
                             });
@@ -462,7 +462,7 @@ export function setupSettingsScene(k) {
                             // Fallback: show the data in console
                             console.log('Save data:', saveData);
                             if (exportStatusText && exportStatusText.exists()) {
-                                exportStatusText.text = 'Check browser console (F12)';
+                                exportStatusText.text = '请查看浏览器控制台 (F12)';
                                 exportStatusText.color = k.rgb(...UI_COLORS.TEXT_SECONDARY);
                             }
                         }
@@ -498,7 +498,7 @@ export function setupSettingsScene(k) {
                 ]);
 
                 const importText = k.add([
-                    k.text('Import Save Data', { size: UI_TEXT_SIZES.SMALL }),
+                    k.text('导入存档', { size: UI_TEXT_SIZES.SMALL }),
                     k.pos(k.width() / 2, currentY),
                     k.anchor('center'),
                     k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -510,7 +510,7 @@ export function setupSettingsScene(k) {
                     // Check if clipboard API is available
                     if (!navigator.clipboard || !navigator.clipboard.readText) {
                         if (exportStatusText && exportStatusText.exists()) {
-                            exportStatusText.text = 'Clipboard not available';
+                            exportStatusText.text = '剪贴板不可用';
                             exportStatusText.color = k.rgb(...UI_COLORS.DANGER);
                         }
                         return;
@@ -521,19 +521,19 @@ export function setupSettingsScene(k) {
                             if (data && typeof data === 'object') {
                                 localStorage.setItem('superSmashTexty_save', text);
                                 if (exportStatusText && exportStatusText.exists()) {
-                                    exportStatusText.text = 'Import successful! Refresh to apply.';
+                                    exportStatusText.text = '导入成功！刷新页面生效。';
                                     exportStatusText.color = k.rgb(...UI_COLORS.SUCCESS);
                                 }
                             }
                         } catch (e) {
                             if (exportStatusText && exportStatusText.exists()) {
-                                exportStatusText.text = 'Invalid save data';
+                                exportStatusText.text = '无效的存档数据';
                                 exportStatusText.color = k.rgb(...UI_COLORS.DANGER);
                             }
                         }
                     }).catch(() => {
                         if (exportStatusText && exportStatusText.exists()) {
-                            exportStatusText.text = 'Failed to read clipboard';
+                            exportStatusText.text = '无法读取剪贴板';
                             exportStatusText.color = k.rgb(...UI_COLORS.DANGER);
                         }
                     });
@@ -554,7 +554,7 @@ export function setupSettingsScene(k) {
                 ]);
 
                 const resetProgressText = k.add([
-                    k.text('Reset All Progress', { size: UI_TEXT_SIZES.SMALL }),
+                    k.text('重置所有进度', { size: UI_TEXT_SIZES.SMALL }),
                     k.pos(k.width() / 2, currentY),
                     k.anchor('center'),
                     k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -567,7 +567,7 @@ export function setupSettingsScene(k) {
                     showResetConfirmationDialog(k, () => {
                         localStorage.removeItem('superSmashTexty_save');
                         if (exportStatusText && exportStatusText.exists()) {
-                            exportStatusText.text = 'Progress reset! Refresh to apply.';
+                            exportStatusText.text = '进度已重置！刷新页面生效。';
                             exportStatusText.color = k.rgb(...UI_COLORS.SUCCESS);
                         }
                     });
@@ -577,7 +577,7 @@ export function setupSettingsScene(k) {
 
                 // Warning note
                 const warningText = k.add([
-                    k.text('Warning: Reset cannot be undone!', { size: 10 }),
+                    k.text('警告: 重置不可撤销！', { size: 10 }),
                     k.pos(k.width() / 2, currentY),
                     k.anchor('center'),
                     k.color(...UI_COLORS.DANGER),
@@ -780,7 +780,7 @@ export function setupSettingsScene(k) {
             // Toggle text (positioned based on current state)
             const textX = value ? toggleX - 12 : toggleX + 8;
             const toggleText = k.add([
-                k.text(value ? 'ON' : 'OFF', { size: 12 }),
+                k.text(value ? '开' : '关', { size: 12 }),
                 k.pos(textX, y),
                 k.anchor('center'),
                 k.color(value ? 100 : 150, value ? 255 : 150, value ? 100 : 150),
@@ -798,7 +798,7 @@ export function setupSettingsScene(k) {
                     newValue ? 50 : 70
                 );
                 toggleHandle.pos.x = newValue ? toggleX + toggleWidth / 2 - handleSize / 2 - 4 : toggleX - toggleWidth / 2 + handleSize / 2 + 4;
-                toggleText.text = newValue ? 'ON' : 'OFF';
+                toggleText.text = newValue ? '开' : '关';
                 toggleText.pos.x = newValue ? toggleX - 12 : toggleX + 8;
                 toggleText.color = k.rgb(
                     newValue ? 100 : 150,
@@ -828,7 +828,7 @@ export function setupSettingsScene(k) {
         ]);
 
         const resetText = k.add([
-            k.text('RESET', { size: UI_TEXT_SIZES.SMALL }),
+            k.text('重置', { size: UI_TEXT_SIZES.SMALL }),
             k.pos(k.width() / 2 + 80, k.height() - 40),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -860,7 +860,7 @@ export function setupSettingsScene(k) {
         ]);
 
         const backText = k.add([
-            k.text('BACK', { size: UI_TEXT_SIZES.SMALL }),
+            k.text('返回', { size: UI_TEXT_SIZES.SMALL }),
             k.pos(k.width() / 2 - 80, k.height() - 40),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_SECONDARY),

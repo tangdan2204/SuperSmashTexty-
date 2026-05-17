@@ -167,7 +167,7 @@ export function showAchievementModal(k, achievement, onClose = null) {
 
         if (unlockParts.length > 0) {
             const unlocksText = k.add([
-                k.text(`Unlocks: ${unlockParts.join(', ')}`, { size: UI_TEXT_SIZES.SMALL, width: modalWidth - 40 }),
+                k.text(`解锁: ${unlockParts.join(', ')}`, { size: UI_TEXT_SIZES.SMALL, width: modalWidth - 40 }),
                 k.pos(centerX, centerY + 5),
                 k.anchor('center'),
                 k.color(...(isUnlocked ? UI_COLORS.SUCCESS : UI_COLORS.GOLD)),
@@ -229,7 +229,7 @@ export function showAchievementModal(k, achievement, onClose = null) {
     } else if (isUnlocked) {
         // Show "UNLOCKED" status
         const unlockedText = k.add([
-            k.text('UNLOCKED', { size: UI_TEXT_SIZES.LABEL }),
+            k.text('已解锁', { size: UI_TEXT_SIZES.LABEL }),
             k.pos(centerX, progressBaseY),
             k.anchor('center'),
             k.color(...UI_COLORS.SUCCESS),
@@ -247,7 +247,7 @@ export function showAchievementModal(k, achievement, onClose = null) {
         const rewardY = progressBaseY + (isUnlocked ? 35 : (progress ? 55 : 35));
 
         const rewardLabel = k.add([
-            k.text('-- REWARD --', { size: UI_TEXT_SIZES.SMALL }),
+            k.text('-- 奖励 --', { size: UI_TEXT_SIZES.SMALL }),
             k.pos(centerX, rewardY),
             k.anchor('center'),
             k.color(...UI_COLORS.GOLD),
@@ -272,7 +272,8 @@ export function showAchievementModal(k, achievement, onClose = null) {
 
     // Difficulty badge - positioned near bottom of modal
     // Using lenticular brackets instead of square brackets to avoid KAPLAY styled text tag parsing
-    const difficultyName = achievement.difficulty.charAt(0).toUpperCase() + achievement.difficulty.slice(1);
+    const difficultyMap = { 'normal': '普通', 'hard': '困难', 'expert': '专家', 'legendary': '传奇' };
+    const difficultyName = difficultyMap[achievement.difficulty] || achievement.difficulty;
     const difficultyBadge = k.add([
         k.text(`【${difficultyName}】`, { size: UI_TEXT_SIZES.SMALL }),
         k.pos(centerX, centerY + modalHeight / 2 - 60),
@@ -299,7 +300,7 @@ export function showAchievementModal(k, achievement, onClose = null) {
     modalState.elements.push(closeButton);
 
     const closeText = k.add([
-        k.text('CLOSE', { size: UI_TEXT_SIZES.SMALL }),
+        k.text('关闭', { size: UI_TEXT_SIZES.SMALL }),
         k.pos(centerX, centerY + modalHeight / 2 - 30),
         k.anchor('center'),
         k.color(...UI_COLORS.TEXT_SECONDARY),

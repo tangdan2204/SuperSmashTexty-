@@ -9,31 +9,31 @@
 const TUTORIAL_HINTS = {
     movement: {
         id: 'movement',
-        message: 'Use WASD to move',
+        message: '使用 WASD 移动',
         duration: 3,
         trigger: 'firstMove' // Triggered on game start
     },
     shooting: {
         id: 'shooting',
-        message: 'Aim with mouse - autofire!',
+        message: '鼠标瞄准 - 自动射击！',
         duration: 3,
         trigger: 'firstShoot' // Triggered when player starts shooting
     },
     levelUp: {
         id: 'levelUp',
-        message: 'Choose upgrade with 1-3 or click',
+        message: '按1-3或点击选择升级',
         duration: 4,
         trigger: 'firstLevelUp' // Triggered on first level up
     },
     synergy: {
         id: 'synergy',
-        message: 'Combine upgrades for bonuses!',
+        message: '组合升级获得协同加成！',
         duration: 4,
         trigger: 'firstSynergy' // Triggered when synergy is first activated
     },
     shop: {
         id: 'shop',
-        message: 'Spend credits on permanent upgrades',
+        message: '用银币购买永久强化',
         duration: 4,
         trigger: 'firstShopVisit' // Triggered when visiting shop
     }

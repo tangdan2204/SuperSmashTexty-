@@ -12,8 +12,8 @@
 // Floor theme definitions - Each floor tells a story
 const FLOOR_THEMES = {
     city: {
-        name: 'Urban Streets',
-        description: 'Abandoned city blocks overrun by chaos',
+        name: '城市街道',
+        description: '被混乱占据的废弃城区',
         floors: [1],
         decorations: [
             // Road markings - faded crosswalks and lanes
@@ -34,8 +34,8 @@ const FLOOR_THEMES = {
         ambientColor: [70, 70, 80] // Dim streetlight glow
     },
     mechanical: {
-        name: 'Industrial Complex',
-        description: 'Rusted factories and hazardous machinery',
+        name: '工业厂区',
+        description: '锈迹斑斑的工厂与危险机械',
         floors: [2],
         decorations: [
             // Heavy metal plating - factory floor
@@ -58,8 +58,8 @@ const FLOOR_THEMES = {
         ambientColor: [90, 75, 60] // Warm industrial lighting
     },
     futuristic: {
-        name: 'Cyber Station',
-        description: 'High-tech facility with malfunctioning systems',
+        name: '赛博空间站',
+        description: '系统故障的高科技设施',
         floors: [3],
         decorations: [
             // Clean panel seams - futuristic flooring
@@ -82,8 +82,8 @@ const FLOOR_THEMES = {
         ambientColor: [60, 80, 120] // Neon blue glow
     },
     alien: {
-        name: 'Alien Vessel',
-        description: 'Otherworldly organic ship interior',
+        name: '异星飞船',
+        description: '异世界有机体飞船内部',
         floors: [4],
         decorations: [
             // Organic pulsing patterns
@@ -108,8 +108,8 @@ const FLOOR_THEMES = {
     },
     // Future floors (5+) - extend the theming
     void: {
-        name: 'The Void',
-        description: 'Reality breaks down at the edge of existence',
+        name: '虚空',
+        description: '存在边缘的现实崩塌',
         floors: [5, 6, 7, 8],
         decorations: [
             // Static and glitches

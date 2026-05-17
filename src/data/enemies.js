@@ -10,7 +10,7 @@ export const ENEMY_TYPES = {
     // FLOOR 1 ENEMIES
     // =================================================================
     rusher: {
-        name: 'Security Guard',
+        name: '保安',
         char: '▶', // Right-pointing triangle
         color: [255, 150, 100],
         baseHealth: 25, // 20-30 range
@@ -22,7 +22,7 @@ export const ENEMY_TYPES = {
         damage: 9 // 8-10 range
     },
     shooter: {
-        name: 'Camera Operator',
+        name: '摄像师',
         char: '◈', // White diamond containing black small diamond
         color: [100, 200, 255],
         baseHealth: 30, // 25-35 range
@@ -35,7 +35,7 @@ export const ENEMY_TYPES = {
         projectileDamage: 7 // 6-8 range
     },
     zombie: {
-        name: 'Audience Member',
+        name: '观众',
         char: '☠', // Skull and crossbones
         color: [150, 150, 150],
         baseHealth: 45, // 40-50 range
@@ -47,7 +47,7 @@ export const ENEMY_TYPES = {
         damage: 11 // 10-12 range
     },
     slime: {
-        name: 'Fan',
+        name: '粉丝',
         char: '●', // Black circle
         color: [100, 255, 100],
         baseHealth: 12, // 10-15 range
@@ -60,7 +60,7 @@ export const ENEMY_TYPES = {
         splits: true // Splits on death
     },
     bat: {
-        name: 'Stagehand',
+        name: '舞台助手',
         char: '▼', // Black down triangle
         color: [200, 150, 255],
         baseHealth: 10, // 8-12 range
@@ -75,7 +75,7 @@ export const ENEMY_TYPES = {
     // FLOOR 2 ENEMIES
     // =================================================================
     charger: {
-        name: 'Head of Security',
+        name: '安保主管',
         char: '→', // Right arrow
         color: [255, 200, 100],
         baseHealth: 20, // 15-25 range
@@ -88,7 +88,7 @@ export const ENEMY_TYPES = {
         chargeCooldown: 3 // Seconds between charges
     },
     turret: {
-        name: 'Camera Director',
+        name: '摄像导演',
         char: '┼', // Box drawing cross
         color: [200, 200, 200],
         baseHealth: 60, // 50-70 range
@@ -101,7 +101,7 @@ export const ENEMY_TYPES = {
         projectileDamage: 13 // 12-15 range
     },
     heavyTank: {
-        name: 'Bouncer',
+        name: '保镖',
         char: '█', // Full block
         color: [150, 150, 255],
         baseHealth: 125, // 100-150 range
@@ -113,7 +113,7 @@ export const ENEMY_TYPES = {
         damage: 22 // 20-25 range
     },
     zippy: {
-        name: 'Runner',
+        name: '场务',
         char: '◐', // Circle with left half black
         color: [255, 255, 150],
         baseHealth: 7, // 5-10 range
@@ -124,7 +124,7 @@ export const ENEMY_TYPES = {
         damage: 5 // 4-6 range
     },
     exploder: {
-        name: 'Pyrotechnics Tech',
+        name: '烟火技师',
         char: '◎', // Bullseye
         color: [255, 100, 50],
         baseHealth: 25, // 20-30 range
@@ -139,7 +139,7 @@ export const ENEMY_TYPES = {
         explosionRadius: 60 // Pixels
     },
     orbiter: {
-        name: 'Floor Manager',
+        name: '楼层经理',
         char: '◉', // Fisheye
         color: [255, 150, 0],
         baseHealth: 35, // Slightly tankier
@@ -156,7 +156,7 @@ export const ENEMY_TYPES = {
         shrapnelCount: 12 // Number of projectiles
     },
     splitter: {
-        name: 'Intern',
+        name: '实习生',
         char: '◇', // White diamond
         color: [200, 255, 200],
         baseHealth: 40, // 35-45 range
@@ -174,7 +174,7 @@ export const ENEMY_TYPES = {
     // FLOOR 3 ENEMIES
     // =================================================================
     mage: {
-        name: 'Lighting Director',
+        name: '灯光总监',
         char: '✦', // Four-pointed star
         color: [200, 100, 255],
         baseHealth: 70, // 60-80 range
@@ -187,7 +187,7 @@ export const ENEMY_TYPES = {
         projectileDamage: 12 // 10-15 range
     },
     shieldBearer: {
-        name: 'Stage Manager',
+        name: '舞台监督',
         char: '▓', // Dark shade
         color: [150, 150, 200],
         baseHealth: 90, // 80-100 range
@@ -200,7 +200,7 @@ export const ENEMY_TYPES = {
         blocksProjectiles: true // Blocks from front (simplified for now)
     },
     golem: {
-        name: 'Set Designer',
+        name: '布景师',
         char: '◼', // Black medium square
         color: [100, 100, 100],
         baseHealth: 250, // 200-300 range
@@ -212,7 +212,7 @@ export const ENEMY_TYPES = {
         damage: 30 // 25-35 range
     },
     wraith: {
-        name: 'Editor',
+        name: '剪辑师',
         char: '≈', // Almost equal (wave)
         color: [150, 150, 255],
         baseHealth: 20, // 15-25 range
@@ -225,7 +225,7 @@ export const ENEMY_TYPES = {
         teleportRange: 150 // Teleport distance
     },
     spawner: {
-        name: 'Casting Director',
+        name: '选角导演',
         char: '◔', // Circle with upper right quadrant black
         color: [255, 150, 100],
         baseHealth: 80, // 70-90 range
@@ -238,7 +238,7 @@ export const ENEMY_TYPES = {
         spawnType: 'rusher' // Spawns basic rushers
     },
     buffer: {
-        name: 'Assistant Director',
+        name: '副导演',
         char: '✚', // Heavy plus
         color: [255, 200, 100],
         baseHealth: 35, // 30-40 range
@@ -251,7 +251,7 @@ export const ENEMY_TYPES = {
         buffAmount: 0.2 // +20% speed and damage
     },
     phaser: {
-        name: 'Ghost Writer',
+        name: '枪手',
         char: '◌', // Dotted circle
         color: [180, 180, 255],
         baseHealth: 25, // 20-30 range
@@ -265,7 +265,7 @@ export const ENEMY_TYPES = {
         phaseThroughObstacles: true // Can move through obstacles
     },
     mimic: {
-        name: 'Stunt Double',
+        name: '替身演员',
         char: '@', // Same as player
         color: [255, 100, 100],
         baseHealth: 35, // 30-40 range
@@ -283,7 +283,7 @@ export const ENEMY_TYPES = {
     // FLOOR 4 ENEMIES
     // =================================================================
     healer: {
-        name: 'Producer',
+        name: '制片人',
         char: '✛', // Open center cross
         color: [100, 255, 150],
         baseHealth: 70, // 60-80 range
@@ -297,7 +297,7 @@ export const ENEMY_TYPES = {
         healInterval: 4 // Heal every 4 seconds
     },
     teleporter: {
-        name: 'Executive Producer',
+        name: '执行制片',
         char: '◖', // Left half black circle
         color: [200, 150, 255],
         baseHealth: 25, // 20-30 range
@@ -310,7 +310,7 @@ export const ENEMY_TYPES = {
         teleportCooldown: 5 // Seconds between teleports
     },
     freezer: {
-        name: 'Network Executive',
+        name: '电视台高管',
         char: '❄', // Snowflake
         color: [150, 200, 255],
         baseHealth: 60, // 50-70 range
@@ -323,7 +323,7 @@ export const ENEMY_TYPES = {
         slowAmount: 0.4 // -40% speed
     },
     leech: {
-        name: 'Talent Agent',
+        name: '经纪人',
         char: '◗', // Right half black circle
         color: [255, 100, 150],
         baseHealth: 30, // 25-35 range
@@ -336,7 +336,7 @@ export const ENEMY_TYPES = {
         lifesteal: 7 // 5-10 range, heals this much on hit
     },
     reflector: {
-        name: 'Mirror Master',
+        name: '镜像大师',
         char: '◈', // Diamond with dot
         color: [200, 200, 255],
         baseHealth: 80, // 70-90 range
@@ -350,7 +350,7 @@ export const ENEMY_TYPES = {
         reflectChance: 0.4 // 40% chance to reflect
     },
     bomber: {
-        name: 'Demolitions Expert',
+        name: '爆破专家',
         char: '◆', // Black diamond
         color: [255, 150, 100],
         baseHealth: 70, // 60-80 range
@@ -369,7 +369,7 @@ export const ENEMY_TYPES = {
     // LEGACY TYPES (for backwards compatibility)
     // =================================================================
     basic: {
-        name: 'Crew Member',
+        name: '剧组成员',
         char: 'E',
         color: [255, 100, 100],
         baseHealth: 30,
@@ -381,7 +381,7 @@ export const ENEMY_TYPES = {
         damage: 8
     },
     tank: {
-        name: 'Camera Operator',
+        name: '摄像师',
         char: '█', // Full block (same as heavyTank)
         color: [150, 150, 255],
         baseHealth: 80,
@@ -393,7 +393,7 @@ export const ENEMY_TYPES = {
         damage: 20
     },
     fast: {
-        name: 'Runner',
+        name: '场务',
         char: 'F',
         color: [255, 255, 100],
         baseHealth: 20,

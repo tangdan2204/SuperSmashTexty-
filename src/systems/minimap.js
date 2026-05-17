@@ -261,7 +261,7 @@ export class Minimap {
 
         // Title
         const title = this.k.add([
-            this.k.text(`Floor ${this.floorMap.floor}`, { size: 10 }),
+            this.k.text(`第${this.floorMap.floor}层`, { size: 10 }),
             this.k.pos(x - width / 2, y + 2 + headerHeight / 2),
             this.k.anchor('center'),
             this.k.color(...COLORS.TEXT_TITLE),
@@ -281,7 +281,7 @@ export class Minimap {
 
         // Room counter at bottom
         const counter = this.k.add([
-            this.k.text(`${this.floorMap.getVisitedCount()}/${this.floorMap.getTotalRooms()} rooms`, { size: 8 }),
+            this.k.text(`${this.floorMap.getVisitedCount()}/${this.floorMap.getTotalRooms()} 房间`, { size: 8 }),
             this.k.pos(x - width / 2, y + height - 8),
             this.k.anchor('center'),
             this.k.color(...COLORS.TEXT_MUTED),
@@ -337,7 +337,7 @@ export class Minimap {
 
         // Title with room count
         const title = this.k.add([
-            this.k.text(`FLOOR ${this.floorMap.floor}  ·  ${this.floorMap.getVisitedCount()}/${this.floorMap.getTotalRooms()}`, { size: 11 }),
+            this.k.text(`第${this.floorMap.floor}层  ·  ${this.floorMap.getVisitedCount()}/${this.floorMap.getTotalRooms()}`, { size: 11 }),
             this.k.pos(x - safeWidth / 2, y + 2 + headerHeight / 2),
             this.k.anchor('center'),
             this.k.color(...COLORS.TEXT_TITLE),
@@ -432,9 +432,9 @@ export class Minimap {
      */
     renderLegend(startX, startY) {
         const legends = [
-            { char: '★', label: 'Current', color: COLORS.CURRENT },
-            { char: '●', label: 'Cleared', color: COLORS.VISITED },
-            { char: '◦', label: 'Available', color: COLORS.AVAILABLE },
+            { char: '★', label: '当前', color: COLORS.CURRENT },
+            { char: '●', label: '已清', color: COLORS.VISITED },
+            { char: '◦', label: '可用', color: COLORS.AVAILABLE },
             { char: 'B', label: 'Boss', color: COLORS.BOSS }
         ];
 

@@ -211,7 +211,7 @@ function applyRunBoosters(k, player, gameState) {
     // Show notification if boosters were applied
     if (boosters.length > 0) {
         const boosterText = k.add([
-            k.text(`${boosters.length} Booster${boosters.length > 1 ? 's' : ''} Active!`, { size: 18 }),
+            k.text(`${boosters.length}个增益生效中！`, { size: 18 }),
             k.pos(k.width() / 2, 100),
             k.anchor('center'),
             k.color(100, 255, 150),
@@ -417,22 +417,22 @@ export function setupGameScene(k) {
 
         // Floor names (TV station tiers)
         const floorNames = {
-            1: 'Public Access',
-            2: 'Local Affiliate',
-            3: 'Cable Network',
-            4: 'Premium Channel',
-            5: 'Streaming Giant',
-            6: 'Global Broadcast',
-            7: 'Galactic Signal'
+            1: '公共频道',
+            2: '地方台',
+            3: '有线电视',
+            4: '付费频道',
+            5: '流媒体巨头',
+            6: '全球直播',
+            7: '星际信号'
         };
-        const getFloorName = (floor) => floorNames[floor] || `Network ${floor}`;
+        const getFloorName = (floor) => floorNames[floor] || `频道 ${floor}`;
 
         // Show floor title when entering a new floor (room 1)
         // Skip if setting is enabled
         const skipIntroAnimation = getSetting('gameplay', 'skipIntroAnimation');
         if (currentRoom === 1 && !skipIntroAnimation) {
             const floorTitle = k.add([
-                k.text(`Floor ${currentFloor}`, { size: 32 }),
+                k.text(`第${currentFloor}层`, { size: 32 }),
                 k.pos(k.width() / 2, k.height() / 3),
                 k.anchor('center'),
                 k.color(255, 255, 255),
@@ -1016,8 +1016,8 @@ export function setupGameScene(k) {
 
                     // Show completion message (same as host)
                     const completionText = isBossRoom
-                        ? `BOSS DEFEATED! Floor ${currentFloor} Complete! Enter a door to continue`
-                        : 'Room Cleared! Enter a door to continue';
+                        ? `BOSS已击败！第${currentFloor}层通关！进入门继续`
+                        : '房间已清除！进入门继续';
                     const completionMsg = k.add([
                         k.text(completionText, { size: 20 }),
                         k.pos(k.width() / 2, k.height() - 40),
@@ -1196,7 +1196,7 @@ export function setupGameScene(k) {
                     if (dodgingPlayer && dodgingPlayer.exists()) {
                         // Show dodge visual feedback
                         const dodgeText = k.add([
-                            k.text('DODGE!', { size: 14 }),
+                            k.text('闪避!', { size: 14 }),
                             k.pos(data.x, data.y - 30),
                             k.anchor('center'),
                             k.color(100, 200, 255),
@@ -1414,7 +1414,7 @@ export function setupGameScene(k) {
                     // Show revival effect with HP percentage
                     const reviveHealthPercent = Math.round(revivePercent * 100);
                     const reviveEffect = k.add([
-                        k.text(`★ REVIVED (${reviveHealthPercent}% HP) ★`, { size: 16 }),
+                        k.text(`★ 复活 (${reviveHealthPercent}% 生命) ★`, { size: 16 }),
                         k.pos(p.pos.x, p.pos.y - 40),
                         k.anchor('center'),
                         k.color(100, 255, 100),
@@ -1963,7 +1963,7 @@ export function setupGameScene(k) {
         ]);
 
         const weaponDetailName = k.add([
-            k.text('Basic Pistol', { size: UI_TEXT_SIZES.SMALL, width: 160 }), // Width constraint to prevent overflow
+            k.text('基础手枪', { size: UI_TEXT_SIZES.SMALL, width: 160 }), // Width constraint to prevent overflow
             k.pos(weaponIconX + 50, weaponIconY - weaponDetailHeight - 10 + 10),
             k.color(...UI_COLORS.TEXT_PRIMARY),
             k.fixed(),
@@ -1971,7 +1971,7 @@ export function setupGameScene(k) {
         ]);
 
         const weaponDetailDamage = k.add([
-            k.text('DMG: 10', { size: UI_TEXT_SIZES.SMALL - 2 }),
+            k.text('伤害: 10', { size: UI_TEXT_SIZES.SMALL - 2 }),
             k.pos(weaponIconX + 50, weaponIconY - weaponDetailHeight - 10 + 30),
             k.color(255, 150, 150),
             k.fixed(),
@@ -1979,7 +1979,7 @@ export function setupGameScene(k) {
         ]);
 
         const weaponDetailFireRate = k.add([
-            k.text('RATE: 3.75/s', { size: UI_TEXT_SIZES.SMALL - 2 }),
+            k.text('射速: 3.75/s', { size: UI_TEXT_SIZES.SMALL - 2 }),
             k.pos(weaponIconX + 50, weaponIconY - weaponDetailHeight - 10 + 47),
             k.color(150, 200, 255),
             k.fixed(),
@@ -2247,18 +2247,18 @@ export function setupGameScene(k) {
 
         // Tooltip data for HUD elements
         const tooltipData = {
-            level: () => `Level ${player.level}\nXP: ${player.xp}/${player.xpToNext}\nProgress: ${Math.floor((player.xp / player.xpToNext) * 100)}%`,
+            level: () => `等级 ${player.level}\n经验: ${player.xp}/${player.xpToNext}\n进度: ${Math.floor((player.xp / player.xpToNext) * 100)}%`,
             enemies: () => {
                 const remaining = k.get('enemy').length + k.get('miniboss').length;
-                return `Enemies Remaining\nClear all to progress\nKills this run: ${runStats.enemiesKilled}`;
+                return `剩余敌人\n消灭全部后推进\n本局击杀: ${runStats.enemiesKilled}`;
             },
-            currency: () => `Total Credits: ${getCurrency()}\nUse in shop between floors\nEarn by killing enemies`,
+            currency: () => `总银币: ${getCurrency()}\n在楼层间的商店使用\n击杀敌人获取`,
             weapon: () => {
                 const weaponDef = player.weaponDef;
-                if (!weaponDef) return 'No weapon equipped';
-                return `${weaponDef.name}\nDamage: ${player.projectileDamage}\nFire Rate: ${player.fireRate.toFixed(2)}/s\nDPS: ${(player.projectileDamage * player.fireRate).toFixed(1)}`;
+                if (!weaponDef) return '未装备武器';
+                return `${weaponDef.name}\n伤害: ${player.projectileDamage}\n射速: ${player.fireRate.toFixed(2)}/s\nDPS: ${(player.projectileDamage * player.fireRate).toFixed(1)}`;
             },
-            health: () => `Health: ${Math.floor(player.hp())}/${player.maxHealth}\nDamage Reduction: ${Math.floor(player.damageReduction * 100)}%`
+            health: () => `生命: ${Math.floor(player.hp())}/${player.maxHealth}\n减伤: ${Math.floor(player.damageReduction * 100)}%`
         };
 
         // Show tooltip on hover
@@ -2721,8 +2721,8 @@ export function setupGameScene(k) {
                 weaponDetailName.text = weaponDef.name;
                 // Ensure name color is always white/primary (explicitly set to prevent color issues)
                 weaponDetailName.color = k.rgb(...UI_COLORS.TEXT_PRIMARY);
-                weaponDetailDamage.text = `DMG: ${player.projectileDamage}`;
-                weaponDetailFireRate.text = `RATE: ${player.fireRate.toFixed(2)}/s`;
+                weaponDetailDamage.text = `伤害: ${player.projectileDamage}`;
+                weaponDetailFireRate.text = `射速: ${player.fireRate.toFixed(2)}/s`;
                 weaponDetailDPS.text = `DPS: ${dps}`;
 
                 // Show weapon details when paused (save state before showing)
@@ -3304,7 +3304,7 @@ export function setupGameScene(k) {
 
                         // Show boss announcement
                         const announcement = k.add([
-                            k.text('THE CO-HOSTS', { size: 32 }),
+                            k.text('联合BOSS', { size: 32 }),
                             k.pos(k.width() / 2, k.height() / 2 - 100),
                             k.anchor('center'),
                             k.color(255, 100, 100),
@@ -3411,7 +3411,7 @@ export function setupGameScene(k) {
                     // Show miniboss announcement
                     const minibossName = MINIBOSS_TYPES[minibossType]?.name || 'MINIBOSS';
                     const announcement = k.add([
-                        k.text(`MINIBOSS: ${minibossName.toUpperCase()}`, { size: 24 }),
+                        k.text(`小BOSS: ${minibossName.toUpperCase()}`, { size: 24 }),
                         k.pos(k.width() / 2, k.height() / 2 - 100),
                         k.anchor('center'),
                         k.color(255, 200, 100),
@@ -3770,7 +3770,7 @@ export function setupGameScene(k) {
 
                     // Miniboss death effects (visual feedback)
                     const deathText = k.add([
-                        k.text('MINIBOSS DEFEATED!', { size: 20 }),
+                        k.text('小BOSS已击败！', { size: 20 }),
                         k.pos(posX, posY - 30),
                         k.anchor('center'),
                         k.color(255, 200, 100),
@@ -3842,7 +3842,7 @@ export function setupGameScene(k) {
 
                     // Boss death effects (visual feedback)
                     const deathText = k.add([
-                        k.text('BOSS DEFEATED!', { size: 24 }),
+                        k.text('BOSS已击败！', { size: 24 }),
                         k.pos(posX, posY - 30),
                         k.anchor('center'),
                         k.color(255, 255, 100),
@@ -4569,9 +4569,9 @@ export function setupGameScene(k) {
             }
 
             // Show completion message (different for boss rooms)
-            const completionText = isBossRoom 
-                ? `BOSS DEFEATED! Floor ${currentFloor} Complete! Enter a door to continue`
-                : 'Room Cleared! Enter a door to continue';
+            const completionText = isBossRoom
+                ? `BOSS已击败！第${currentFloor}层通关！进入门继续`
+                : '房间已清除！进入门继续';
             const completionMsg = k.add([
                 k.text(completionText, { size: 20 }),
                 k.pos(k.width() / 2, k.height() - 40),
@@ -4719,7 +4719,7 @@ export function setupGameScene(k) {
                     if (unlocked) {
                         // Show unlock notification (could be enhanced later)
                         const unlockText = k.add([
-                            k.text('NEW CHARACTER UNLOCKED!', { size: 24 }),
+                            k.text('新角色已解锁！', { size: 24 }),
                             k.pos(k.width() / 2, k.height() / 2 - 50),
                             k.anchor('center'),
                             k.color(100, 255, 100),
@@ -4773,7 +4773,7 @@ export function setupGameScene(k) {
                     if (unlocked) {
                         // Show unlock notification (could be enhanced later)
                         const unlockText = k.add([
-                            k.text('NEW CHARACTER UNLOCKED!', { size: 24 }),
+                            k.text('新角色已解锁！', { size: 24 }),
                             k.pos(k.width() / 2, k.height() / 2 - 50),
                             k.anchor('center'),
                             k.color(100, 255, 100),
@@ -4952,7 +4952,7 @@ export function setupGameScene(k) {
 
         // Paused title with H1 styling
         const pauseText = k.add([
-            k.text('PAUSED', { size: UI_TEXT_SIZES.H1 * 2 }),
+            k.text('暂停', { size: UI_TEXT_SIZES.H1 * 2 }),
             k.pos(k.width() / 2, k.height() / 2 - 95),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -4980,7 +4980,7 @@ export function setupGameScene(k) {
         ]);
 
         const resumeText = k.add([
-            k.text('RESUME', { size: UI_TEXT_SIZES.H2 }),
+            k.text('继续', { size: UI_TEXT_SIZES.H2 }),
             k.pos(k.width() / 2, pauseCenterY - 20),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -5003,7 +5003,7 @@ export function setupGameScene(k) {
         ]);
 
         const quitText = k.add([
-            k.text('QUIT', { size: UI_TEXT_SIZES.SMALL }),
+            k.text('退出', { size: UI_TEXT_SIZES.SMALL }),
             k.pos(k.width() / 2, pauseCenterY + 45),
             k.anchor('center'),
             k.color(...UI_COLORS.TEXT_PRIMARY),
@@ -5134,7 +5134,7 @@ export function setupGameScene(k) {
                     ]);
 
                     const confirmText = k.add([
-                        k.text('Leave party and return to menu?', { size: 20 }),
+                        k.text('离开队伍并返回菜单？', { size: 20 }),
                         k.pos(k.width() / 2, k.height() / 2 - 50),
                         k.anchor('center'),
                         k.color(255, 255, 255),
@@ -5156,7 +5156,7 @@ export function setupGameScene(k) {
                     ]);
 
                     k.add([
-                        k.text('Yes', { size: 16 }),
+                        k.text('是', { size: 16 }),
                         k.pos(k.width() / 2 - 60, k.height() / 2 + 10),
                         k.anchor('center'),
                         k.color(255, 255, 255),
@@ -5178,7 +5178,7 @@ export function setupGameScene(k) {
                     ]);
 
                     k.add([
-                        k.text('No', { size: 16 }),
+                        k.text('否', { size: 16 }),
                         k.pos(k.width() / 2 + 60, k.height() / 2 + 10),
                         k.anchor('center'),
                         k.color(255, 255, 255),
@@ -5231,7 +5231,7 @@ export function setupGameScene(k) {
                     ]);
 
                     const confirmText = k.add([
-                        k.text('Abandon run and return to menu?', { size: 20 }),
+                        k.text('放弃本局并返回菜单？', { size: 20 }),
                         k.pos(k.width() / 2, k.height() / 2 - 50),
                         k.anchor('center'),
                         k.color(255, 255, 255),
@@ -5253,7 +5253,7 @@ export function setupGameScene(k) {
                     ]);
 
                     k.add([
-                        k.text('Yes', { size: 16 }),
+                        k.text('是', { size: 16 }),
                         k.pos(k.width() / 2 - 60, k.height() / 2 + 10),
                         k.anchor('center'),
                         k.color(255, 255, 255),
@@ -5275,7 +5275,7 @@ export function setupGameScene(k) {
                     ]);
 
                     k.add([
-                        k.text('No', { size: 16 }),
+                        k.text('否', { size: 16 }),
                         k.pos(k.width() / 2 + 60, k.height() / 2 + 10),
                         k.anchor('center'),
                         k.color(255, 255, 255),
