@@ -1,223 +1,217 @@
 # SuperSmashTexty
 
-An ASCII-style browser action roguelike that blends the arena-style chaos of Smash TV with the roguelike upgrade loops of Vampire Survivors.
+一款 ASCII 风格的浏览器动作 Roguelike 游戏，融合了 Smash TV 的竞技场式混战与 Vampire Survivors 的 Roguelike 升级循环。
 
-## 🎮 Play Now
+## 🎮 立即游玩
 
-**🎮 [Play SuperSmashTexty on GitHub Pages](https://lpm24.github.io/SuperSmashTexty/)**
+**🎮 [在线游玩 SuperSmashTexty](https://smash.tangdan.cc)**
 
-Play directly in your browser - no installation required!
+直接在浏览器中游玩 - 无需安装！
 
-## 🎮 Game Overview
+## 🎮 游戏概述
 
-**SuperSmashTexty** is a high-intensity power fantasy where players fight through procedurally generated arenas, collecting upgrades and unlocking persistent meta-progression. Players take on the role of contestants in a deadly game show, fighting through studio floors against increasingly powerful show staff and executives.
+**SuperSmashTexty** 是一款高强度的力量幻想游戏，玩家在程序化生成的竞技场中战斗，收集升级道具并解锁持久的元进度。玩家扮演致命游戏秀的参赛者，在演播室楼层中与越来越强大的节目工作人员和高管战斗。
 
-### Key Features
+### 核心特性
 
-- **Arena Combat:** Fast-paced, room-based combat with procedurally generated arenas
-- **Roguelike Progression:** In-run upgrades and meta-progression between runs
-- **ASCII Aesthetic:** Charming, readable monospace visual style
-- **Browser-Based:** Playable directly in browser, no installation required
-- **Autofire Combat:** Constant action focused on positioning and movement
-- **Floor & Room System:** Progress through floors, each containing multiple challenge rooms
+- **竞技场战斗：** 快节奏、房间制战斗，程序化生成竞技场
+- **Roguelike 进度：** 局内升级与局间元进度系统
+- **ASCII 美学：** 迷人、易读的等宽字体视觉风格
+- **浏览器游戏：** 直接在浏览器中游玩，无需安装
+- **自动射击：** 持续战斗，专注于走位和移动
+- **楼层与房间系统：** 逐层推进，每层包含多个挑战房间
 
-## 🚀 Getting Started
+## 🚀 快速开始
 
-### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
+### 前置要求
+- Node.js (v16 或更高版本)
+- npm 或 yarn
 
-### Installation
+### 安装
 
-1. Clone the repository:
+1. 克隆仓库：
 ```bash
 git clone <repository-url>
 cd SuperSmashTexty
 ```
 
-2. Install dependencies:
+2. 安装依赖：
 ```bash
 npm install
 ```
 
-3. Start the development server:
+3. 启动开发服务器：
 ```bash
 npm run dev
 ```
 
-The game will open in your browser at `http://localhost:3010`
+游戏将在浏览器中打开，地址为 `http://localhost:3010`
 
-### Multiplayer Setup (Local Development)
+### 多人游戏设置（本地开发）
 
-For local multiplayer testing, you need to run the PeerJS server:
+进行本地多人测试时，需要运行 PeerJS 服务器：
 
 ```bash
 npx peerjs --port 9000
 ```
 
-This starts a local PeerJS signaling server on port 9000. The game automatically detects if you're running on localhost and will use this local server. When deployed to GitHub Pages, it automatically switches to the PeerJS cloud service.
+这会在 9000 端口启动本地 PeerJS 信令服务器。游戏会自动检测是否在 localhost 上运行并使用本地服务器。部署到线上时，会自动切换到 PeerJS 云服务。
 
-**Note:** The multiplayer system automatically handles environment detection:
-- **Localhost** → Uses local PeerJS server (localhost:9000)
-- **GitHub Pages** → Uses PeerJS cloud service (cloud.peerjs.com)
+**说明：** 多人系统会自动处理环境检测：
+- **Localhost** → 使用本地 PeerJS 服务器 (localhost:9000)
+- **线上部署** → 使用 PeerJS 云服务 (cloud.peerjs.com)
 
-### Development Commands
+### 开发命令
 
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build for production (outputs to `dist/`)
-- `npm run preview` - Preview production build locally
-- `npx peerjs --port 9000` - Start local PeerJS server for multiplayer testing
+- `npm run dev` - 启动带热重载的开发服务器
+- `npm run build` - 构建生产版本（输出到 `dist/`）
+- `npm run preview` - 本地预览生产构建
+- `npx peerjs --port 9000` - 启动本地 PeerJS 服务器用于多人测试
 
-### Project Structure
+### 项目结构
 
 ```
 /
-├── index.html          # Main HTML file
-├── package.json        # Dependencies and scripts
-├── vite.config.js      # Vite build configuration
+├── index.html          # 主 HTML 文件
+├── package.json        # 依赖和脚本
+├── vite.config.js      # Vite 构建配置
 ├── src/
-│   ├── main.js         # Entry point, KAPLAY initialization
-│   ├── assets/         # Game assets (fonts, sprites, sounds)
-│   ├── config/         # Game configuration and constants
-│   │   └── constants.js    # Centralized game config (tuning, balancing)
-│   ├── core/           # Core architecture (multiplayer-ready)
-│   │   ├── GameState.js    # Centralized, serializable game state
-│   │   ├── InputManager.js # Deterministic input handling
-│   │   └── NetworkManager.js # Network abstraction layer
-│   ├── data/           # Data-driven content (enemies, bosses, weapons, unlocks)
-│   │   ├── enemies.js      # 21 enemy type definitions
-│   │   ├── bosses.js       # Boss definitions with mechanics
-│   │   ├── minibosses.js   # Miniboss definitions
-│   │   ├── weapons.js      # Weapon definitions
-│   │   └── unlocks.js      # Character and achievement unlocks
-│   ├── scenes/         # Game scenes (menu, game, shop, settings, etc.)
-│   ├── systems/        # Game systems (combat, progression, spawning, etc.)
-│   └── entities/       # Entity factories (player, enemies, bosses, etc.)
-└── dist/               # Production build output (gitignored)
+│   ├── main.js         # 入口文件，KAPLAY 初始化
+│   ├── assets/         # 游戏资源（字体、精灵、音效）
+│   ├── config/         # 游戏配置和常量
+│   │   └── constants.js    # 集中的游戏配置（调参、平衡）
+│   ├── core/           # 核心架构（多人就绪）
+│   │   ├── GameState.js    # 集中的可序列化游戏状态
+│   │   ├── InputManager.js # 确定性输入处理
+│   │   └── NetworkManager.js # 网络抽象层
+│   ├── data/           # 数据驱动内容（敌人、Boss、武器、解锁）
+│   │   ├── enemies.js      # 21 种敌人类型定义
+│   │   ├── bosses.js       # Boss 定义及机制
+│   │   ├── minibosses.js   # 小 Boss 定义
+│   │   ├── weapons.js      # 武器定义
+│   │   └── unlocks.js      # 角色和成就解锁
+│   ├── scenes/         # 游戏场景（菜单、游戏、商店、设置等）
+│   ├── systems/        # 游戏系统（战斗、进度、生成等）
+│   └── entities/       # 实体工厂（玩家、敌人、Boss 等）
+└── dist/               # 生产构建输出（gitignored）
 ```
 
-## 🛠️ Technical Stack
+## 🛠️ 技术栈
 
-- **Engine:** KAPLAY v3001.0.19 (ES Modules)
-- **Build Tool:** Vite v5.0.0 with hot module replacement
-- **Rendering:** ASCII bitmap font atlas / monospace sprite sheet
-- **Multiplayer:** PeerJS v1.5.4 (WebRTC P2P networking)
-  - Auto-detects environment (localhost vs production)
-  - Uses local PeerJS server for development
-  - Uses PeerJS cloud service for GitHub Pages deployment
-  - Supports up to 4 players via invite code system
-- **Architecture:**
-  - **Data-Driven:** Content separated from logic (21 enemies, 4 bosses, 5 minibosses)
-  - **State Management:** Centralized, serializable GameState for multiplayer support
-  - **Input System:** Deterministic input handling with frame history
-  - **Network Layer:** P2P multiplayer with host-authoritative game state
-- **Deployment:** GitHub Pages (static build)
-- **Storage:** Browser localStorage for saves and settings
+- **引擎：** KAPLAY v3001.0.19（ES Modules）
+- **构建工具：** Vite v5.0.0，支持热模块替换
+- **渲染：** ASCII 位图字体图集 / 等宽精灵表
+- **多人：** PeerJS v1.5.4（WebRTC P2P 网络）
+  - 自动检测环境（localhost 与线上）
+  - 开发时使用本地 PeerJS 服务器
+  - 线上部署使用 PeerJS 云服务
+  - 通过邀请码系统支持最多 4 名玩家
+- **架构：**
+  - **数据驱动：** 内容与逻辑分离（21 种敌人、4 个 Boss、5 个小 Boss）
+  - **状态管理：** 集中的可序列化 GameState，支持多人同步
+  - **输入系统：** 确定性输入处理，带帧历史
+  - **网络层：** P2P 多人，主机权威游戏状态
+- **部署：** 静态构建
+- **存储：** 浏览器 localStorage 保存存档和设置
 
-## 📋 Development Status
+## 📋 开发状态
 
-✅ **Game Design Document Complete** - Design phase finished  
-✅ **Phase 1: Core Prototype (COMPLETE)**
-- ✅ Basic setup with KAPLAY
-- ✅ Player entity with WASD movement
-- ✅ Autofire weapon system with mouse aiming
-- ✅ Projectile system
-- ✅ Basic enemy AI
-- ✅ Collision detection (player-enemy, projectile-enemy)
-- ✅ Single room arena system
-- ✅ XP collection and level-up system
-- ✅ Upgrade draft system (3 choices on level-up)
-- ✅ Immunity frames after taking damage
-- ✅ Room completion logic
-- ✅ Door spawning system
+✅ **游戏设计文档完成** - 设计阶段完成
+✅ **阶段 1：核心原型（已完成）**
+- ✅ 使用 KAPLAY 的基础设置
+- ✅ 玩家实体 WASD 移动
+- ✅ 自动射击武器系统，鼠标瞄准
+- ✅ 弹道系统
+- ✅ 基础敌人 AI
+- ✅ 碰撞检测（玩家-敌人、弹道-敌人）
+- ✅ 单房间竞技场系统
+- ✅ 经验收集和升级系统
+- ✅ 升级选择系统（升级时 3 选 1）
+- ✅ 受伤后无敌帧
+- ✅ 房间完成逻辑
+- ✅ 门生成系统
 
-✅ **Phase 2: Core Loop Development (COMPLETE)**
-- ✅ Door-based enemy spawning (enemies spawn from doors)
-- ✅ Upgrade system expansion (multi-shot, piercing, crits, spread, defense)
-- ✅ Room generation/templates (6 room templates with obstacles)
-- ✅ Obstacle system (walls block everything, cover blocks movement but allows projectiles)
-- ✅ Floor-based color progression (visual distinction between floors)
-- ✅ Synergy system (8 upgrade combinations with special effects)
-- ✅ Meta progression system (currency, save/load, unlocks, results screen)
-- ✅ Shop UI (purchase permanent upgrades, characters, and weapons with currency)
-  - Left-click to purchase upgrades
-  - Right-click to refund a single level of permanent upgrades
-  - Bulk refund option for all permanent upgrades
-- ✅ Settings/Options menu (audio, controls, visual, gameplay settings with persistence)
-- ✅ Statistics & Achievements system (lifetime stats tracking, achievement unlocks, progress display)
-- ✅ UI improvements (pause overlay, compact HUD, level/XP decimal display)
-- ✅ Boss armor system with proper damage reduction
-- ✅ Projectile range limits for weapon differentiation
+✅ **阶段 2：核心循环开发（已完成）**
+- ✅ 基于门的敌人生成（敌人从门中刷出）
+- ✅ 升级系统扩展（多发射击、穿透、暴击、散射、防御）
+- ✅ 房间生成/模板（6 种带障碍物的房间模板）
+- ✅ 障碍物系统（墙壁阻挡一切，掩体阻挡移动但允许弹道通过）
+- ✅ 基于楼层的颜色渐进（不同楼层视觉区分）
+- ✅ 协同系统（8 种升级组合，带特殊效果）
+- ✅ 元进度系统（货币、存读档、解锁、结算界面）
+- ✅ 商店 UI（使用货币购买永久升级、角色和武器）
+  - 左键购买升级
+  - 右键退回单级永久升级
+  - 批量退回所有永久升级
+- ✅ 设置/选项菜单（音频、控制、视觉、游戏设置，支持持久化）
+- ✅ 统计与成就系统（终身数据追踪、成就解锁、进度展示）
+- ✅ UI 改进（暂停覆盖层、紧凑 HUD、等级/经验小数显示）
+- ✅ Boss 护甲系统，支持合理的伤害减免
+- ✅ 弹道射程限制，用于武器差异化
 
-🎮 **Current Phase:** Phase 3 - Content & Polish
-- ✅ Character selection system with unlockable characters
-- ✅ Multiple weapon types (pistol, SMG, shotgun, sniper, etc.)
-- ✅ Boss and miniboss entities with unique mechanics
-- ✅ Achievement system with tracking and rewards
-- ✅ Complete menu system (main menu, character select, shop, settings, statistics)
-- ✅ Room generation system with procedural variety
-- ✅ Enhanced combat system with multiple upgrade paths
-- ✅ Game show theme implementation (enemies, bosses, menus themed as TV show staff)
-- ✅ Animated ASCII block art titles for all sub-menus (matching main menu aesthetic)
-- ✅ Menu UI standardization (credit indicators, back buttons, character icons)
-- ✅ Shop improvements (escalating prices, refund system, optimized layout)
-- ✅ Options menu with confirmation dialogs
-- ✅ Enhanced visual effects (golden enemy easter egg, particle effects)
-- ✅ Background particle effects on all menu pages
-- 🔄 Content expansion (more enemies, upgrades, synergies)
-- 🔄 Advanced procedural generation improvements
-- 🔄 Balance tuning and gameplay refinement
+🎮 **当前阶段：** 阶段 3 - 内容与打磨
+- ✅ 角色选择系统，支持可解锁角色
+- ✅ 多种武器类型（手枪、冲锋枪、霰弹枪、狙击枪等）
+- ✅ Boss 和小 Boss 实体，带独特机制
+- ✅ 成就系统，支持追踪和奖励
+- ✅ 完整菜单系统（主菜单、角色选择、商店、设置、统计）
+- ✅ 房间生成系统，支持程序化多样性
+- ✅ 增强战斗系统，多种升级路线
+- ✅ 游戏秀主题实现（敌人、Boss、菜单以电视节目工作人员为主题）
+- ✅ 所有子菜单的动画 ASCII 块字艺术标题（匹配主菜单风格）
+- ✅ 菜单 UI 标准化（货币指示器、返回按钮、角色图标）
+- ✅ 商店改进（递增价格、退款系统、优化布局）
+- ✅ 选项菜单带确认对话框
+- ✅ 增强视觉效果（金色敌人彩蛋、粒子效果）
+- ✅ 所有菜单页面的背景粒子效果
+- 🔄 内容扩展（更多敌人、升级、协同）
+- 🔄 高级程序化生成改进
+- 🔄 平衡调优和游戏体验打磨
 
-See `GAME_DESIGN_DOCUMENT.md` for complete design specifications and implementation roadmap.
+详见 `GAME_DESIGN_DOCUMENT.md` 获取完整设计规格和实现路线图。
 
-## 🏗️ Architecture & Code Quality
+## 🏗️ 架构与代码质量
 
-**Recent Major Refactor (2025-01):**
-- ✅ **Constants System**: Centralized game configuration for easy tuning
-- ✅ **Data-Driven Content**: Enemies, bosses, and weapons as pure data (21 enemies, 4 bosses, 5 minibosses)
-- ✅ **Multiplayer-Ready Architecture**: State, Input, and Network managers
-- ✅ **Comprehensive Documentation**: File headers and inline comments throughout
-- ✅ **Clean Codebase**: Zero dead code, organized imports, clear structure
-- ✅ **Future-Proof**: Ready for Windows/browser synchronous co-op multiplayer
-- ✅ **Game Show Theme**: Complete re-theming of enemies, bosses, and menus with TV show aesthetic
-- ✅ **Menu Polish**: Animated ASCII titles, standardized UI elements, enhanced visual effects
-- ✅ **Shop System**: Escalating prices, granular refund controls, optimized layouts
+**近期重大重构（2025-01）：**
+- ✅ **常量系统**：集中的游戏配置，方便调参
+- ✅ **数据驱动内容**：敌人、Boss 和武器以纯数据形式定义（21 种敌人、4 个 Boss、5 个小 Boss）
+- ✅ **多人就绪架构**：状态、输入和网络管理器
+- ✅ **完善的文档**：全面的文件头和行内注释
+- ✅ **整洁代码库**：零死代码，规范导入，清晰结构
+- ✅ **面向未来**：为 Windows/浏览器同步合作多人准备就绪
+- ✅ **游戏秀主题**：敌人、Boss 和菜单的完整电视节目主题重做
+- ✅ **菜单打磨**：动画 ASCII 标题、标准化 UI 元素、增强视觉效果
+- ✅ **商店系统**：递增价格、精细退款控制、优化布局
 
-The codebase follows best practices with:
-- Separation of concerns (entities, systems, data, core)
-- Single source of truth (centralized GameState)
-- Deterministic systems (reproducible gameplay)
-- Fully serializable state (JSON-ready for network sync)
+代码库遵循最佳实践：
+- 关注点分离（实体、系统、数据、核心）
+- 单一数据源（集中的 GameState）
+- 确定性系统（可复现的游戏过程）
+- 完全可序列化的状态（JSON 格式，支持网络同步）
 
-## 📄 Documentation
+## 📄 文档
 
-- [Game Design Document](GAME_DESIGN_DOCUMENT.md) - Complete design specifications
-- [Design Prompt](Game%20Design%20Doc%20Prompt%2020251112.txt) - Original design requirements
-- [Development Priorities](DEVELOPMENT_PRIORITIES.md) - Current development focus and priorities
-- [Git Workflow Guide](GIT_WORKFLOW.md) - Git automation and workflow documentation
+- [游戏设计文档](GAME_DESIGN_DOCUMENT.md) - 完整设计规格
+- [设计需求](Game%20Design%20Doc%20Prompt%2020251112.txt) - 原始设计要求
+- [开发优先级](DEVELOPMENT_PRIORITIES.md) - 当前开发重点和优先级
+- [Git 工作流指南](GIT_WORKFLOW.md) - Git 自动化和工作流文档
 
-## 🎯 Project Goals
+## 🎯 项目目标
 
-1. ✅ Create a playable prototype with core mechanics
-2. ✅ Implement procedural room generation
-3. ✅ Build upgrade and meta-progression systems
-4. ✅ Deploy to GitHub Pages for easy access
-5. 🔄 Expand content (enemies, upgrades, synergies)
-6. 🔄 Polish and balance gameplay
-7. 🔄 Implement multiplayer (architecture ready)
+1. ✅ 创建包含核心机制的可玩原型
+2. ✅ 实现程序化房间生成
+3. ✅ 构建升级和元进度系统
+4. ✅ 部署到线上方便访问
+5. 🔄 扩展内容（敌人、升级、协同）
+6. 🔄 打磨和平衡游戏性
+7. 🔄 实现多人（架构已就绪）
 
-## 🚀 Deployment
+## 🚀 部署
 
-The game is automatically deployed to GitHub Pages. To deploy manually:
+游戏已自动部署。手动部署：
 
-```bash
-./deploy.sh
-```
-
-Or manually:
 ```bash
 npm run build
-git subtree push --prefix dist origin gh-pages
 ```
 
-Visit: **https://lpm24.github.io/SuperSmashTexty/**
+访问：**https://smash.tangdan.cc**
